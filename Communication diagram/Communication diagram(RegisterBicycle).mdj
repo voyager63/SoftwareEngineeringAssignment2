@@ -1028,7 +1028,7 @@
 											"height": 13,
 											"alpha": 1.5707958004791072,
 											"distance": 19,
-											"text": "2 : RegisterNewBicycle()"
+											"text": "2 : registerNewBicycle()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -1890,7 +1890,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW1+vx8CGoOZk="
 							},
-							"name": "RegisterNewBicycle()",
+							"name": "registerNewBicycle()",
 							"source": {
 								"$ref": "AAAAAAGW1+w3gyG4qpU="
 							},
