@@ -157,7 +157,7 @@
 													"parentStyle": true,
 													"left": -96,
 													"top": 16,
-													"width": 106.20263671875,
+													"width": 110.24609375,
 													"height": 13,
 													"text": "(from Interaction1)"
 												},
@@ -265,7 +265,7 @@
 													"parentStyle": true,
 													"left": 80,
 													"top": -48,
-													"width": 106.20263671875,
+													"width": 110.24609375,
 													"height": 13,
 													"text": "(from Interaction1)"
 												},
@@ -373,7 +373,7 @@
 													"parentStyle": true,
 													"left": 240,
 													"top": -336,
-													"width": 106.20263671875,
+													"width": 110.24609375,
 													"height": 13,
 													"text": "(from Interaction1)"
 												},
@@ -689,9 +689,9 @@
 											},
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 421.70458984375,
+											"left": 420.692138671875,
 											"top": 294.5,
-											"width": 102.5908203125,
+											"width": 104.61572265625,
 											"height": 13,
 											"alpha": -1.5707958722494422,
 											"distance": 22,
@@ -1355,13 +1355,13 @@
 											},
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 416.201416015625,
+											"left": 408.98095703125,
 											"top": 214.5,
-											"width": 115.59716796875,
+											"width": 130.0380859375,
 											"height": 13,
 											"alpha": 1.5707958004791072,
 											"distance": 19,
-											"text": "3 : addNewBicycle()"
+											"text": "3 : createNewBicycle()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -1480,7 +1480,7 @@
 													"parentStyle": true,
 													"left": 128,
 													"top": 64,
-													"width": 106.20263671875,
+													"width": 110.24609375,
 													"height": 13,
 													"text": "(from Interaction1)"
 												},
@@ -1907,7 +1907,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW1+vx8CGoOZk="
 							},
-							"name": "addNewBicycle()",
+							"name": "createNewBicycle()",
 							"source": {
 								"$ref": "AAAAAAGW1+3mxyHW1Do="
 							},
