@@ -44,7 +44,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2ArJYpFMm8Y="
 							},
-							"name": "RentBicycle",
+							"name": "RentBike",
 							"ownedViews": [
 								{
 									"_type": "UMLFrameView",
@@ -66,9 +66,9 @@
 											"parentStyle": true,
 											"left": 32.72998046875,
 											"top": 13,
-											"width": 68.63720703125,
+											"width": 52.7490234375,
 											"height": 13,
-											"text": "RentBicycle"
+											"text": "RentBike"
 										},
 										{
 											"_type": "LabelView",
@@ -157,7 +157,7 @@
 													"parentStyle": true,
 													"left": -144,
 													"top": -48,
-													"width": 106.20263671875,
+													"width": 110.24609375,
 													"height": 13,
 													"text": "(from Interaction1)"
 												},
@@ -252,7 +252,7 @@
 													"top": 244,
 													"width": 92.7490234375,
 													"height": 13,
-													"text": ":RentBicycleUI"
+													"text": ":RentBikeUI"
 												},
 												{
 													"_type": "LabelView",
@@ -265,7 +265,7 @@
 													"parentStyle": true,
 													"left": -48,
 													"top": -16,
-													"width": 106.20263671875,
+													"width": 110.24609375,
 													"height": 13,
 													"text": "(from Interaction1)"
 												},
@@ -360,7 +360,7 @@
 													"top": 244,
 													"width": 91,
 													"height": 13,
-													"text": ":RentBicycle"
+													"text": ":RentBike"
 												},
 												{
 													"_type": "LabelView",
@@ -373,7 +373,7 @@
 													"parentStyle": true,
 													"left": -48,
 													"top": -32,
-													"width": 106.20263671875,
+													"width": 110.24609375,
 													"height": 13,
 													"text": "(from Interaction1)"
 												},
@@ -480,7 +480,7 @@
 													"font": "Arial;13;0",
 													"parentStyle": true,
 													"left": 16,
-													"width": 106.20263671875,
+													"width": 110.24609375,
 													"height": 13,
 													"text": "(from Interaction1)"
 												},
@@ -574,7 +574,7 @@
 													"top": 420,
 													"width": 121.67529296875,
 													"height": 13,
-													"text": "newBicycle:Bicycle"
+													"text": "newBike:Bike"
 												},
 												{
 													"_type": "LabelView",
@@ -587,7 +587,7 @@
 													"parentStyle": true,
 													"left": 128,
 													"top": -16,
-													"width": 106.20263671875,
+													"width": 110.24609375,
 													"height": 13,
 													"text": "(from Interaction1)"
 												},
@@ -903,9 +903,9 @@
 											},
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 362.70458984375,
+											"left": 361.692138671875,
 											"top": 273.5,
-											"width": 102.5908203125,
+											"width": 104.61572265625,
 											"height": 13,
 											"alpha": -1.5707957385596025,
 											"distance": 17,
@@ -1242,7 +1242,7 @@
 											"height": 13,
 											"alpha": 1.5707958004791072,
 											"distance": 19,
-											"text": "2 : rentBicycle()"
+											"text": "2 : rentBike()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -1575,7 +1575,7 @@
 											"height": 13,
 											"alpha": 1.5707958004791072,
 											"distance": 19,
-											"text": "3 : addNewBicycle()"
+											"text": "3 : addNewBike()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -1908,7 +1908,7 @@
 											"height": 13,
 											"alpha": 0.02816156302357187,
 											"distance": 71.02816342831905,
-											"text": "4 : addNewBicycle()"
+											"text": "4 : addNewBike()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -2242,7 +2242,7 @@
 											"height": 13,
 											"alpha": 1.5707958004791072,
 											"distance": 19,
-											"text": "5 : Bicycle()"
+											"text": "5 : Bike()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -2329,7 +2329,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2ArJYpFMm8Y="
 							},
-							"name": "rentBicycle()",
+							"name": "rentBike()",
 							"source": {
 								"$ref": "AAAAAAGW2Ar4RJFcKcc="
 							},
@@ -2346,7 +2346,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2ArJYpFMm8Y="
 							},
-							"name": "addNewBicycle()",
+							"name": "addNewBike()",
 							"source": {
 								"$ref": "AAAAAAGW2As5KpF6P6E="
 							},
@@ -2363,7 +2363,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2ArJYpFMm8Y="
 							},
-							"name": "addNewBicycle()",
+							"name": "addNewBike()",
 							"source": {
 								"$ref": "AAAAAAGW2AuZW5GXf7U="
 							},
@@ -2380,7 +2380,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2ArJYpFMm8Y="
 							},
-							"name": "Bicycle()",
+							"name": "Bike()",
 							"source": {
 								"$ref": "AAAAAAGW2AwrrpG2wRM="
 							},
@@ -2412,7 +2412,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2ArJYpFMm8Y="
 							},
-							"name": ":RentBicycleUI",
+							"name": ":RentBikeUI",
 							"stereotype": "boundary",
 							"represent": {
 								"$ref": "AAAAAAGW2As5KpF53i0="
@@ -2425,7 +2425,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2ArJYpFMm8Y="
 							},
-							"name": ":RentBicycle",
+							"name": ":RentBike",
 							"stereotype": "control",
 							"represent": {
 								"$ref": "AAAAAAGW2AuZW5GWiLU="
@@ -2451,7 +2451,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2ArJYpFMm8Y="
 							},
-							"name": "newBicycle:Bicycle",
+							"name": "newBike:Bike",
 							"stereotype": "entity",
 							"represent": {
 								"$ref": "AAAAAAGW2AyospHTuSk="

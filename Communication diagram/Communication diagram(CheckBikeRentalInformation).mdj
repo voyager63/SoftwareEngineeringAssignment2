@@ -44,7 +44,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2RYCPIuBgxw="
 							},
-							"name": "Check bicycle rental information",
+							"name": "Check bike rental information",
 							"ownedViews": [
 								{
 									"_type": "UMLFrameView",
@@ -66,9 +66,9 @@
 											"parentStyle": true,
 											"left": 32.72998046875,
 											"top": 13,
-											"width": 184.2470703125,
+											"width": 168.35888671875,
 											"height": 13,
-											"text": "Check bicycle rental information"
+											"text": "Check bike rental information"
 										},
 										{
 											"_type": "LabelView",
@@ -252,7 +252,7 @@
 													"top": 212,
 													"width": 214.103515625,
 													"height": 13,
-													"text": ":CheckBicycleRentalInformationUI"
+													"text": ":CheckBikeRentalInformationUI"
 												},
 												{
 													"_type": "LabelView",
@@ -360,7 +360,7 @@
 													"top": 212,
 													"width": 201.103515625,
 													"height": 13,
-													"text": ":CheckBicycleRentalInformation"
+													"text": ":CheckBikeRentalInformation"
 												},
 												{
 													"_type": "LabelView",
@@ -576,7 +576,7 @@
 													"top": 460,
 													"width": 91,
 													"height": 13,
-													"text": ":Bicycle"
+													"text": ":Bike"
 												},
 												{
 													"_type": "LabelView",
@@ -911,7 +911,7 @@
 											"height": 13,
 											"alpha": -3.19282982755059,
 											"distance": 78.10249675906654,
-											"text": "1 : getMemberBicycles()"
+											"text": "1 : getMemberBikes()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -1245,7 +1245,7 @@
 											"height": 13,
 											"alpha": 0.025635406879102027,
 											"distance": 156.05127362504928,
-											"text": "2 : *[For all member's bicycles]: getBicycleDetails()"
+											"text": "2 : *[For all member's bikes]: getBikeDetails()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -2141,7 +2141,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2RYCPIuBgxw="
 							},
-							"name": "getMemberBicycles()",
+							"name": "getMemberBikes()",
 							"source": {
 								"$ref": "AAAAAAGW2Re+64vN9bA="
 							},
@@ -2158,7 +2158,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2RYCPIuBgxw="
 							},
-							"name": "*[For all member's bicycles]: getBicycleDetails()",
+							"name": "*[For all member's bikes]: getBikeDetails()",
 							"source": {
 								"$ref": "AAAAAAGW2Re+64vN9bA="
 							},
@@ -2207,7 +2207,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2RYCPIuBgxw="
 							},
-							"name": ":CheckBicycleRentalInformationUI",
+							"name": ":CheckBikeRentalInformationUI",
 							"stereotype": "boundary",
 							"represent": {
 								"$ref": "AAAAAAGW2RbdEYuuyZA="
@@ -2220,7 +2220,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2RYCPIuBgxw="
 							},
-							"name": ":CheckBicycleRentalInformation",
+							"name": ":CheckBikeRentalInformation",
 							"stereotype": "control",
 							"represent": {
 								"$ref": "AAAAAAGW2Re+64vMwtA="
@@ -2246,7 +2246,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2RYCPIuBgxw="
 							},
-							"name": ":Bicycle",
+							"name": ":Bike",
 							"stereotype": "entity",
 							"represent": {
 								"$ref": "AAAAAAGW2RlCBowKZLk="

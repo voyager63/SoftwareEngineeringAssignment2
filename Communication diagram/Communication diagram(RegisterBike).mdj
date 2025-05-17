@@ -44,7 +44,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW1+vx8CGoOZk="
 							},
-							"name": "RegisterBicycle",
+							"name": "RegisterBike",
 							"ownedViews": [
 								{
 									"_type": "UMLFrameView",
@@ -66,9 +66,9 @@
 											"parentStyle": true,
 											"left": 32.72998046875,
 											"top": 13,
-											"width": 89.58447265625,
+											"width": 73.6962890625,
 											"height": 13,
-											"text": "RegisterBicycle"
+											"text": "RegisterBike"
 										},
 										{
 											"_type": "LabelView",
@@ -252,7 +252,7 @@
 													"top": 260,
 													"width": 115.8798828125,
 													"height": 13,
-													"text": ":RegisterBicycleUI"
+													"text": ":RegisterBikeUI"
 												},
 												{
 													"_type": "LabelView",
@@ -360,7 +360,7 @@
 													"top": 260,
 													"width": 102.8798828125,
 													"height": 13,
-													"text": ":RegisterBicycle"
+													"text": ":RegisterBike"
 												},
 												{
 													"_type": "LabelView",
@@ -1028,7 +1028,7 @@
 											"height": 13,
 											"alpha": 1.5707958004791072,
 											"distance": 19,
-											"text": "2 : registerNewBicycle()"
+											"text": "2 : registerNewBike()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -1361,7 +1361,7 @@
 											"height": 13,
 											"alpha": 1.5707958004791072,
 											"distance": 19,
-											"text": "3 : createNewBicycle()"
+											"text": "3 : createNewBike()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -1467,7 +1467,7 @@
 													"top": 468,
 													"width": 121.67529296875,
 													"height": 13,
-													"text": "newBicycle:Bicycle"
+													"text": "newBike:Bike"
 												},
 												{
 													"_type": "LabelView",
@@ -1802,7 +1802,7 @@
 											"height": 13,
 											"alpha": 0.0949516838708515,
 											"distance": 42.190046219457976,
-											"text": "4 : Bicycle()"
+											"text": "4 : Bike()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -1890,7 +1890,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW1+vx8CGoOZk="
 							},
-							"name": "registerNewBicycle()",
+							"name": "registerNewBike()",
 							"source": {
 								"$ref": "AAAAAAGW1+w3gyG4qpU="
 							},
@@ -1907,7 +1907,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW1+vx8CGoOZk="
 							},
-							"name": "createNewBicycle()",
+							"name": "createNewBike()",
 							"source": {
 								"$ref": "AAAAAAGW1+3mxyHW1Do="
 							},
@@ -1924,7 +1924,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW1+vx8CGoOZk="
 							},
-							"name": "Bicycle()",
+							"name": "Bike()",
 							"source": {
 								"$ref": "AAAAAAGW1+6joSHz3Pc="
 							},
@@ -1956,7 +1956,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW1+vx8CGoOZk="
 							},
-							"name": ":RegisterBicycleUI",
+							"name": ":RegisterBikeUI",
 							"stereotype": "boundary",
 							"represent": {
 								"$ref": "AAAAAAGW1+3mxyHVpoE="
@@ -1969,7 +1969,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW1+vx8CGoOZk="
 							},
-							"name": ":RegisterBicycle",
+							"name": ":RegisterBike",
 							"stereotype": "control",
 							"represent": {
 								"$ref": "AAAAAAGW1+6joSHyR4Y="
@@ -1982,7 +1982,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW1+vx8CGoOZk="
 							},
-							"name": "newBicycle:Bicycle",
+							"name": "newBike:Bike",
 							"stereotype": "entity",
 							"represent": {
 								"$ref": "AAAAAAGW1/PEOSkAIUI="

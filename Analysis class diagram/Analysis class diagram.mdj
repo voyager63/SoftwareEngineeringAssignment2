@@ -576,12 +576,68 @@
 									"model": {
 										"$ref": "AAAAAAGW2hl0Vb3SrfE="
 									},
+									"subViews": [
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGW3NAGkEpAocg=",
+											"_parent": {
+												"$ref": "AAAAAAGW2hl0Vr3arxE="
+											},
+											"model": {
+												"$ref": "AAAAAAGW3NAGiko9jV0="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 197,
+											"top": 515,
+											"width": 132.16796875,
+											"height": 13,
+											"text": "-ID",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGW3NBP70rAmyE=",
+											"_parent": {
+												"$ref": "AAAAAAGW2hl0Vr3arxE="
+											},
+											"model": {
+												"$ref": "AAAAAAGW3NBP50q9KJ0="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 197,
+											"top": 530,
+											"width": 132.16796875,
+											"height": 13,
+											"text": "-password",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGW3NCzRUtAnGI=",
+											"_parent": {
+												"$ref": "AAAAAAGW2hl0Vr3arxE="
+											},
+											"model": {
+												"$ref": "AAAAAAGW3NCzPks95Gk="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 197,
+											"top": 545,
+											"width": 132.16796875,
+											"height": 13,
+											"text": "-phoneNumber",
+											"horizontalAlignment": 0
+										}
+									],
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 192,
 									"top": 510,
 									"width": 142.16796875,
-									"height": 10
+									"height": 53
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -605,7 +661,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 197,
-											"top": 525,
+											"top": 568,
 											"width": 132.16796875,
 											"height": 13,
 											"text": "+getPassword()",
@@ -623,10 +679,10 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 197,
-											"top": 540,
+											"top": 583,
 											"width": 132.16796875,
 											"height": 13,
-											"text": "+addNewBicycle()",
+											"text": "+addNewBike()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -641,17 +697,17 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 197,
-											"top": 555,
+											"top": 598,
 											"width": 132.16796875,
 											"height": 13,
-											"text": "+getMemberBicycles()",
+											"text": "+getMemberBikes()",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 192,
-									"top": 520,
+									"top": 563,
 									"width": 142.16796875,
 									"height": 53
 								},
@@ -696,7 +752,7 @@
 							"left": 192,
 							"top": 472,
 							"width": 141.16796875,
-							"height": 101,
+							"height": 144,
 							"nameCompartment": {
 								"$ref": "AAAAAAGW2hl0Vr3VKzg="
 							},
@@ -1251,12 +1307,50 @@
 									"model": {
 										"$ref": "AAAAAAGW2h318L5ueo4="
 									},
+									"subViews": [
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGW3M26/kjbd08=",
+											"_parent": {
+												"$ref": "AAAAAAGW2h318L527Mw="
+											},
+											"model": {
+												"$ref": "AAAAAAGW3M269EjYZiQ="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 53,
+											"top": 515,
+											"width": 92.39990234375,
+											"height": 13,
+											"text": "-ID",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGW3M4bI0m60ec=",
+											"_parent": {
+												"$ref": "AAAAAAGW2h318L527Mw="
+											},
+											"model": {
+												"$ref": "AAAAAAGW3M4bHEm3FLg="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 53,
+											"top": 530,
+											"width": 92.39990234375,
+											"height": 13,
+											"text": "-password",
+											"horizontalAlignment": 0
+										}
+									],
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 48,
 									"top": 510,
 									"width": 102.39990234375,
-									"height": 10
+									"height": 38
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1280,7 +1374,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 53,
-											"top": 525,
+											"top": 553,
 											"width": 92.39990234375,
 											"height": 13,
 											"text": "+getPassword()",
@@ -1290,7 +1384,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 48,
-									"top": 520,
+									"top": 548,
 									"width": 102.39990234375,
 									"height": 23
 								},
@@ -1335,7 +1429,7 @@
 							"left": 48,
 							"top": 472,
 							"width": 101.39990234375,
-							"height": 71,
+							"height": 99,
 							"nameCompartment": {
 								"$ref": "AAAAAAGW2h318L5xtZQ="
 							},
@@ -1830,7 +1924,7 @@
 											"top": 228,
 											"width": 128.02294921875,
 											"height": 13,
-											"text": "RegisterBicycleUI"
+											"text": "RegisterBikeUI"
 										},
 										{
 											"_type": "LabelView",
@@ -1940,7 +2034,7 @@
 											"top": 276,
 											"width": 128.02294921875,
 											"height": 13,
-											"text": "+registerNewBicycle()",
+											"text": "+registerNewBike()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2055,7 +2149,7 @@
 											"top": 228,
 											"width": 120.564453125,
 											"height": 13,
-											"text": "RegisterBicycle"
+											"text": "RegisterBike"
 										},
 										{
 											"_type": "LabelView",
@@ -2147,7 +2241,7 @@
 											"top": 261,
 											"width": 120.564453125,
 											"height": 13,
-											"text": "+createNewBicycle()",
+											"text": "+createNewBike()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2245,7 +2339,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 517,
-											"top": 493,
+											"top": 501,
 											"width": 116.4130859375,
 											"height": 13,
 											"text": "«entity»"
@@ -2259,10 +2353,10 @@
 											"font": "Arial;13;1",
 											"parentStyle": true,
 											"left": 517,
-											"top": 508,
+											"top": 516,
 											"width": 116.4130859375,
 											"height": 13,
-											"text": "Bicycle"
+											"text": "Bike"
 										},
 										{
 											"_type": "LabelView",
@@ -2274,7 +2368,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 288,
-											"top": 16,
+											"top": 32,
 											"width": 85.0966796875,
 											"height": 13,
 											"text": "(from Model1)"
@@ -2289,7 +2383,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 288,
-											"top": 16,
+											"top": 32,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
@@ -2297,7 +2391,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 512,
-									"top": 488,
+									"top": 496,
 									"width": 126.4130859375,
 									"height": 38,
 									"stereotypeLabel": {
@@ -2322,12 +2416,50 @@
 									"model": {
 										"$ref": "AAAAAAGW2iZchL+jtrE="
 									},
+									"subViews": [
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGW3NwwnPdIW5M=",
+											"_parent": {
+												"$ref": "AAAAAAGW2iZchL+r9nk="
+											},
+											"model": {
+												"$ref": "AAAAAAGW3NwwjPdFPO4="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 517,
+											"top": 539,
+											"width": 116.4130859375,
+											"height": 13,
+											"text": "-bikeID",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGW3NyRUffIv8Q=",
+											"_parent": {
+												"$ref": "AAAAAAGW2iZchL+r9nk="
+											},
+											"model": {
+												"$ref": "AAAAAAGW3NyRSffF6H8="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 517,
+											"top": 554,
+											"width": 116.4130859375,
+											"height": 13,
+											"text": "-bikeProductName",
+											"horizontalAlignment": 0
+										}
+									],
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 512,
-									"top": 526,
+									"top": 534,
 									"width": 126.4130859375,
-									"height": 10
+									"height": 38
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -2351,17 +2483,17 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 517,
-											"top": 541,
+											"top": 577,
 											"width": 116.4130859375,
 											"height": 13,
-											"text": "+getBicycleDetails()",
+											"text": "+getBikeDetails()",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 512,
-									"top": 536,
+									"top": 572,
 									"width": 126.4130859375,
 									"height": 23
 								},
@@ -2378,7 +2510,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 144,
-									"top": 8,
+									"top": 16,
 									"width": 10,
 									"height": 10
 								},
@@ -2395,7 +2527,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 144,
-									"top": 8,
+									"top": 16,
 									"width": 10,
 									"height": 10
 								}
@@ -2404,9 +2536,9 @@
 							"parentStyle": false,
 							"containerChangeable": true,
 							"left": 512,
-							"top": 488,
+							"top": 496,
 							"width": 125.4130859375,
-							"height": 71,
+							"height": 99,
 							"nameCompartment": {
 								"$ref": "AAAAAAGW2iZchL+mexI="
 							},
@@ -2469,7 +2601,7 @@
 											"top": 356,
 											"width": 106.83447265625,
 											"height": 13,
-											"text": "RentBicycleUI"
+											"text": "RentBikeUI"
 										},
 										{
 											"_type": "LabelView",
@@ -2579,7 +2711,7 @@
 											"top": 404,
 											"width": 106.83447265625,
 											"height": 13,
-											"text": "+rentBicycle()",
+											"text": "+rentBike()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2694,7 +2826,7 @@
 											"top": 356,
 											"width": 106.4853515625,
 											"height": 13,
-											"text": "RentBicycle"
+											"text": "RentBike"
 										},
 										{
 											"_type": "LabelView",
@@ -2786,7 +2918,7 @@
 											"top": 389,
 											"width": 106.4853515625,
 											"height": 13,
-											"text": "+addNewBicycle()",
+											"text": "+addNewBike()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2901,7 +3033,7 @@
 											"top": 356,
 											"width": 209.7744140625,
 											"height": 13,
-											"text": "CheckBicycleRentalInformationUI"
+											"text": "CheckBikeRentalInformationUI"
 										},
 										{
 											"_type": "LabelView",
@@ -3108,7 +3240,7 @@
 											"top": 356,
 											"width": 196.7744140625,
 											"height": 13,
-											"text": "CheckBicycleRentalInformation"
+											"text": "CheckBikeRentalInformation"
 										},
 										{
 											"_type": "LabelView",
@@ -3268,7 +3400,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": false,
 									"left": 422,
-									"top": 501,
+									"top": 523,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -3290,7 +3422,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": false,
 									"left": 422,
-									"top": 486,
+									"top": 508,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -3312,7 +3444,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": false,
 									"left": 421,
-									"top": 530,
+									"top": 552,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -3334,7 +3466,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": false,
 									"left": 360,
-									"top": 501,
+									"top": 523,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -3356,7 +3488,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": false,
 									"left": 362,
-									"top": 487,
+									"top": 509,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -3378,7 +3510,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": false,
 									"left": 355,
-									"top": 528,
+									"top": 550,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -3400,7 +3532,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": false,
 									"left": 485,
-									"top": 501,
+									"top": 523,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -3421,7 +3553,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": false,
 									"left": 482,
-									"top": 488,
+									"top": 510,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -3442,7 +3574,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": false,
 									"left": 489,
-									"top": 529,
+									"top": 551,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -3490,7 +3622,7 @@
 								"$ref": "AAAAAAGW2hl0Vr3U1mk="
 							},
 							"lineStyle": 1,
-							"points": "334:522;511:523",
+							"points": "334:544;511:545",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGW2jrHufWGF2U="
@@ -3535,8 +3667,8 @@
 							},
 							"font": "Arial;13;0",
 							"parentStyle": false,
-							"left": 408,
-							"top": 528,
+							"left": 400,
+							"top": 544,
 							"width": 40,
 							"height": 25,
 							"text": "rents"
@@ -3550,7 +3682,7 @@
 							"font": "Arial;13;0",
 							"parentStyle": false,
 							"left": 480,
-							"top": 496,
+							"top": 520,
 							"width": 32,
 							"height": 25,
 							"text": "0..*"
@@ -3564,7 +3696,7 @@
 							"font": "Arial;13;0",
 							"parentStyle": false,
 							"left": 336,
-							"top": 496,
+							"top": 520,
 							"width": 31.68359375,
 							"height": 25,
 							"text": "0..1"
@@ -3655,6 +3787,38 @@
 						}
 					],
 					"stereotype": "entity",
+					"attributes": [
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGW3NAGiko9jV0=",
+							"_parent": {
+								"$ref": "AAAAAAGW2hl0Vb3SrfE="
+							},
+							"name": "ID",
+							"visibility": "private",
+							"type": ""
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGW3NBP50q9KJ0=",
+							"_parent": {
+								"$ref": "AAAAAAGW2hl0Vb3SrfE="
+							},
+							"name": "password",
+							"visibility": "private",
+							"type": ""
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGW3NCzPks95Gk=",
+							"_parent": {
+								"$ref": "AAAAAAGW2hl0Vb3SrfE="
+							},
+							"name": "phoneNumber",
+							"visibility": "private",
+							"type": ""
+						}
+					],
 					"operations": [
 						{
 							"_type": "UMLOperation",
@@ -3670,7 +3834,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2hl0Vb3SrfE="
 							},
-							"name": "addNewBicycle"
+							"name": "addNewBike"
 						},
 						{
 							"_type": "UMLOperation",
@@ -3678,7 +3842,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2hl0Vb3SrfE="
 							},
-							"name": "getMemberBicycles"
+							"name": "getMemberBikes"
 						}
 					]
 				},
@@ -3736,6 +3900,28 @@
 					},
 					"name": "administrator",
 					"stereotype": "entity",
+					"attributes": [
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGW3M269EjYZiQ=",
+							"_parent": {
+								"$ref": "AAAAAAGW2h318L5ueo4="
+							},
+							"name": "ID",
+							"visibility": "private",
+							"type": ""
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGW3M4bHEm3FLg=",
+							"_parent": {
+								"$ref": "AAAAAAGW2h318L5ueo4="
+							},
+							"name": "password",
+							"visibility": "private",
+							"type": ""
+						}
+					],
 					"operations": [
 						{
 							"_type": "UMLOperation",
@@ -3799,7 +3985,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGW2hglN7110cA="
 					},
-					"name": "RegisterBicycleUI",
+					"name": "RegisterBikeUI",
 					"stereotype": "boundary",
 					"operations": [
 						{
@@ -3816,7 +4002,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2iP5Xb81rQ4="
 							},
-							"name": "registerNewBicycle"
+							"name": "registerNewBike"
 						}
 					]
 				},
@@ -3826,7 +4012,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGW2hglN7110cA="
 					},
-					"name": "RegisterBicycle",
+					"name": "RegisterBike",
 					"stereotype": "control",
 					"operations": [
 						{
@@ -3835,7 +4021,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2iQ25r9hZ4Y="
 							},
-							"name": "createNewBicycle"
+							"name": "createNewBike"
 						}
 					]
 				},
@@ -3845,8 +4031,30 @@
 					"_parent": {
 						"$ref": "AAAAAAGW2hglN7110cA="
 					},
-					"name": "Bicycle",
+					"name": "Bike",
 					"stereotype": "entity",
+					"attributes": [
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGW3NwwjPdFPO4=",
+							"_parent": {
+								"$ref": "AAAAAAGW2iZchL+jtrE="
+							},
+							"name": "bikeID",
+							"visibility": "private",
+							"type": ""
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGW3NyRSffF6H8=",
+							"_parent": {
+								"$ref": "AAAAAAGW2iZchL+jtrE="
+							},
+							"name": "bikeProductName",
+							"visibility": "private",
+							"type": ""
+						}
+					],
 					"operations": [
 						{
 							"_type": "UMLOperation",
@@ -3854,7 +4062,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2iZchL+jtrE="
 							},
-							"name": "getBicycleDetails"
+							"name": "getBikeDetails"
 						}
 					]
 				},
@@ -3864,7 +4072,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGW2hglN7110cA="
 					},
-					"name": "RentBicycleUI",
+					"name": "RentBikeUI",
 					"stereotype": "boundary",
 					"operations": [
 						{
@@ -3881,7 +4089,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2ibjg7/PLaw="
 							},
-							"name": "rentBicycle"
+							"name": "rentBike"
 						}
 					]
 				},
@@ -3891,7 +4099,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGW2hglN7110cA="
 					},
-					"name": "RentBicycle",
+					"name": "RentBike",
 					"stereotype": "control",
 					"operations": [
 						{
@@ -3900,7 +4108,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2ichV7/6Euk="
 							},
-							"name": "addNewBicycle"
+							"name": "addNewBike"
 						}
 					]
 				},
@@ -3910,7 +4118,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGW2hglN7110cA="
 					},
-					"name": "CheckBicycleRentalInformationUI",
+					"name": "CheckBikeRentalInformationUI",
 					"stereotype": "boundary",
 					"operations": [
 						{
@@ -3929,7 +4137,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGW2hglN7110cA="
 					},
-					"name": "CheckBicycleRentalInformation",
+					"name": "CheckBikeRentalInformation",
 					"stereotype": "control"
 				}
 			]
