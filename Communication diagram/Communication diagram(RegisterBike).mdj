@@ -144,7 +144,7 @@
 													"top": 260,
 													"width": 91,
 													"height": 13,
-													"text": ":Administrator"
+													"text": "Administrator"
 												},
 												{
 													"_type": "LabelView",
@@ -1943,7 +1943,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW1+vx8CGoOZk="
 							},
-							"name": ":Administrator",
+							"name": "Administrator",
 							"stereotype": "actor",
 							"represent": {
 								"$ref": "AAAAAAGW1+w3giG3KJs="

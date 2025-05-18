@@ -143,7 +143,7 @@
 													"top": 268,
 													"width": 152.37890625,
 													"height": 13,
-													"text": ":Member, :Administrator"
+													"text": "Member, Administrator"
 												},
 												{
 													"_type": "LabelView",
@@ -688,9 +688,9 @@
 											},
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 417.70458984375,
+											"left": 416.692138671875,
 											"top": 297.5,
-											"width": 102.5908203125,
+											"width": 104.61572265625,
 											"height": 13,
 											"alpha": -1.5707957385596025,
 											"distance": 17,
@@ -1021,9 +1021,9 @@
 											},
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 202.119140625,
+											"left": 201.0146484375,
 											"top": 222.5,
-											"width": 91.76171875,
+											"width": 93.970703125,
 											"height": 13,
 											"alpha": 1.5707958004791072,
 											"distance": 19,
@@ -1483,7 +1483,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW19Y2OdYYTsQ="
 							},
-							"name": ":Member, :Administrator",
+							"name": "Member, Administrator",
 							"stereotype": "actor",
 							"represent": {
 								"$ref": "AAAAAAGW19Z7/dYnaD4="

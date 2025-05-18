@@ -360,7 +360,7 @@
 													"top": 244,
 													"width": 91,
 													"height": 13,
-													"text": ":User"
+													"text": "User"
 												},
 												{
 													"_type": "LabelView",
@@ -1967,7 +1967,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW1Aks+pjGXhM="
 							},
-							"name": ":User",
+							"name": "User",
 							"stereotype": "actor",
 							"represent": {
 								"$ref": "AAAAAAGW1AzSH5kU+XE="

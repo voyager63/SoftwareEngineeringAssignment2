@@ -343,7 +343,7 @@
 													"parentStyle": true,
 													"left": 61,
 													"top": 253,
-													"width": 151.24267578125,
+													"width": 152.37890625,
 													"height": 13,
 													"text": "«actor»"
 												},
@@ -357,9 +357,9 @@
 													"parentStyle": true,
 													"left": 61,
 													"top": 268,
-													"width": 151.24267578125,
+													"width": 152.37890625,
 													"height": 13,
-													"text": ":Member, :Administrator"
+													"text": "Member, Administrator"
 												},
 												{
 													"_type": "LabelView",
@@ -395,7 +395,7 @@
 											"parentStyle": true,
 											"left": 56,
 											"top": 248,
-											"width": 161.24267578125,
+											"width": 162.37890625,
 											"height": 38,
 											"stereotypeLabel": {
 												"$ref": "AAAAAAGW0t2cSL4RZ+I="
@@ -415,7 +415,7 @@
 									"parentStyle": false,
 									"left": 56,
 									"top": 248,
-									"width": 160.24267578125,
+									"width": 161.37890625,
 									"height": 38,
 									"nameCompartment": {
 										"$ref": "AAAAAAGW0t2cSL4QpwY="
@@ -842,7 +842,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 242,
+											"left": 243,
 											"top": 246,
 											"height": 13,
 											"alpha": 0.5235987755982988,
@@ -864,7 +864,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 245,
+											"left": 246,
 											"top": 232,
 											"height": 13,
 											"alpha": 0.7853981633974483,
@@ -886,7 +886,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 238,
+											"left": 239,
 											"top": 273,
 											"height": 13,
 											"alpha": -0.5235987755982988,
@@ -969,7 +969,7 @@
 										"$ref": "AAAAAAGW0t2cSL4PNYk="
 									},
 									"lineStyle": 1,
-									"points": "217:267;295:267",
+									"points": "218:267;295:267",
 									"showVisibility": true,
 									"nameLabel": {
 										"$ref": "AAAAAAGW1F3FkdeSzo0="
@@ -1117,7 +1117,7 @@
 													"parentStyle": true,
 													"left": 517,
 													"top": 437,
-													"width": 151.24267578125,
+													"width": 152.37890625,
 													"height": 13,
 													"text": "«entity»"
 												},
@@ -1131,7 +1131,7 @@
 													"parentStyle": true,
 													"left": 517,
 													"top": 452,
-													"width": 151.24267578125,
+													"width": 152.37890625,
 													"height": 13,
 													"text": ":Member, :Administrator"
 												},
@@ -1145,7 +1145,7 @@
 													"font": "Arial;13;0",
 													"parentStyle": true,
 													"left": 192,
-													"width": 106.20263671875,
+													"width": 110.24609375,
 													"height": 13,
 													"text": "(from Interaction1)"
 												},
@@ -1167,7 +1167,7 @@
 											"parentStyle": true,
 											"left": 512,
 											"top": 432,
-											"width": 161.24267578125,
+											"width": 162.37890625,
 											"height": 38,
 											"stereotypeLabel": {
 												"$ref": "AAAAAAGW17LWkbcwGCI="
@@ -1187,7 +1187,7 @@
 									"parentStyle": false,
 									"left": 512,
 									"top": 432,
-									"width": 160.24267578125,
+									"width": 161.37890625,
 									"height": 38,
 									"nameCompartment": {
 										"$ref": "AAAAAAGW17LWkbcvIn4="
@@ -1966,7 +1966,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW0tz6+r3FIbQ="
 							},
-							"name": ":Member, :Administrator",
+							"name": "Member, Administrator",
 							"stereotype": "actor",
 							"represent": {
 								"$ref": "AAAAAAGW0t2cSL4N/2Y="

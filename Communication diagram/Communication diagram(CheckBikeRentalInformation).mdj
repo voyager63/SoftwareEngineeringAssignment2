@@ -144,7 +144,7 @@
 													"top": 212,
 													"width": 91,
 													"height": 13,
-													"text": ":Member"
+													"text": "Member"
 												},
 												{
 													"_type": "LabelView",
@@ -2194,7 +2194,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2RYCPIuBgxw="
 							},
-							"name": ":Member",
+							"name": "Member",
 							"stereotype": "actor",
 							"represent": {
 								"$ref": "AAAAAAGW2Rao/YuQxsU="
