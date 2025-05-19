@@ -2972,6 +2972,24 @@
 											"height": 13,
 											"text": "+startInterface()",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGW6XLLv4DB93s=",
+											"_parent": {
+												"$ref": "AAAAAAGW2itP9sBZyys="
+											},
+											"model": {
+												"$ref": "AAAAAAGW6XLLrIC+vYw="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 341,
+											"top": 404,
+											"width": 209.7744140625,
+											"height": 13,
+											"text": "+checkBikeRentalInformation()",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
@@ -2979,7 +2997,7 @@
 									"left": 336,
 									"top": 384,
 									"width": 219.7744140625,
-									"height": 23
+									"height": 38
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -3022,7 +3040,7 @@
 							"left": 336,
 							"top": 336,
 							"width": 218.7744140625,
-							"height": 71,
+							"height": 86,
 							"nameCompartment": {
 								"$ref": "AAAAAAGW2itP9cBTYDc="
 							},
@@ -3159,12 +3177,32 @@
 									"model": {
 										"$ref": "AAAAAAGW2iwo6cEA7i8="
 									},
+									"subViews": [
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGW6XMgt4HoqDk=",
+											"_parent": {
+												"$ref": "AAAAAAGW2iwo6cEJraI="
+											},
+											"model": {
+												"$ref": "AAAAAAGW6XMgrIHlqcU="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 589,
+											"top": 389,
+											"width": 196.7744140625,
+											"height": 13,
+											"text": "+showBikeRentalInformation()",
+											"horizontalAlignment": 0
+										}
+									],
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 584,
 									"top": 384,
 									"width": 206.7744140625,
-									"height": 10
+									"height": 23
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -3205,7 +3243,7 @@
 							"left": 584,
 							"top": 336,
 							"width": 205.7744140625,
-							"height": 58,
+							"height": 71,
 							"nameCompartment": {
 								"$ref": "AAAAAAGW2iwo6cEDBKo="
 							},
@@ -5737,6 +5775,14 @@
 								"$ref": "AAAAAAGW2itP9cBQSRM="
 							},
 							"name": "startInterface"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGW6XLLrIC+vYw=",
+							"_parent": {
+								"$ref": "AAAAAAGW2itP9cBQSRM="
+							},
+							"name": "checkBikeRentalInformation"
 						}
 					]
 				},
@@ -5747,7 +5793,17 @@
 						"$ref": "AAAAAAGW2hglN7110cA="
 					},
 					"name": "CheckBikeRentalInformation",
-					"stereotype": "control"
+					"stereotype": "control",
+					"operations": [
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGW6XMgrIHlqcU=",
+							"_parent": {
+								"$ref": "AAAAAAGW2iwo6cEA7i8="
+							},
+							"name": "showBikeRentalInformation"
+						}
+					]
 				},
 				{
 					"_type": "UMLClass",
