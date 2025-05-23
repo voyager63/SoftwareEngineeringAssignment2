@@ -18,6 +18,10 @@ int main(){
 	int menu_level_1 = 0, menu_level_2 = 0;
 	int is_program_exit = 0;
 
+	UserCollection user_collection("admin", "admin");
+	BikeCollection bike_collection;
+	AccessManager access_manager;
+
 	while (!is_program_exit)
 	{
 		in_fp >> menu_level_1 >> menu_level_2;
@@ -30,8 +34,8 @@ int main(){
 				{
 					case 1: //회원가입
 					{
-
-
+						SignUp sign_up(&in_fp, &user_collection);
+						break;
 					}
 				}
 				break;
@@ -42,11 +46,13 @@ int main(){
 				{
 					case 1: //로그인
 					{
-
+						Login login(&in_fp, &user_collection, &access_manager);
+						break;
 					}
 					case 2: //로그아웃
 					{
-
+						Logout logout(&access_manager);
+						break;
 					}
 				}
 				break;
@@ -57,8 +63,8 @@ int main(){
 				{
 					case 1: //자전거 등록
 					{
-
-
+						RegisterBike register_bike(&in_fp, &bike_collection, &access_manager);
+						break;
 					}
 				}
 				break;
@@ -69,8 +75,8 @@ int main(){
 				{
 					case 1: //자전거 대여
 					{
-
-
+						RentBike rent_bike(&in_fp, &bike_collection, &access_manager);
+						break;
 					}
 				}
 				break;
@@ -81,8 +87,8 @@ int main(){
 				{
 					case 1: //대여 중인 자전거 정보 조회
 					{
-
-
+						CheckBikeRentalInformation check_bike_rental_information(&access_manager);
+						break;
 					}
 				}
 				break;
