@@ -5,125 +5,125 @@ using namespace std;
 
 class User {
 private:
-	string ID;
-	string passWord;
-	string phoneNumber;
-	char userType;
-	RentedBikeCollection* ownedRentedBikeCollection;
+	string id_;
+	string password_;
+	string phone_number_;
+	char user_type_;
+	RentedBikeCollection* owned_rented_bike_collection_;
 public:
-	string getPassword();
-	RentedBikeCollection* getUserBikes();
-	bool isAdmin();
-	bool isMember();
+	string GetPassword();
+	RentedBikeCollection* GetUserBikes();
+	bool IsAdmin();
+	bool IsMember();
 };
 
 class UserCollection {
 private:
-	User* userList[50];
-	int numUsers;
+	User* user_list_[50];
+	int num_users_;
 public:
-	void addNewUser();
-	User* getUserByID(string id);
+	void AddNewUser();
+	User* GetUserByID(string id);
 };
 
 class Bike {
 private:
-	string bikeID;
-	string bikeProductName;
+	string bike_id_;
+	string bike_product_name_;
 public:
-	string getBikeDetails();
+	string GetBikeDetails();
 };
 
 class BikeCollection {
 private:
-	Bike* bikeList[50];
-	int numBikes;
+	Bike* bike_list_[50];
+	int num_bikes_;
 public:
-	void addNewBike();
-	Bike* getBikeByID(string bikeID);
+	void AddNewBike();
+	Bike* GetBikeByID(string bike_id);
 };
 
 class RentedBikeCollection {
 private:
-	Bike* ownedRentedBike[50];
+	Bike* owned_rented_bike_[50];
 public:
-	void addNewBike();
+	void AddNewBike();
 };
 
 class AccessManager {
 private:
-	User* currentUser;
+	User* current_user_;
 public:
-	void connect();
-	void disconnect();
-	User* getCurrentUser();
+	void Connect();
+	void Disconnect();
+	User* GetCurrentUser();
 };
 
 
 class SignUpUI {
 public:
-	void startInterface();
-	void createNewUser();
+	void StartInterface();
+	void CreateNewUser();
 };
 
 class SignUp {
 public:
-	void addNewUser();
+	void AddNewUser();
 };
 
 class LoginUI{
 public:
-	void startInterface();
-	void clickLogin();
+	void StartInterface();
+	void ClickLogin();
 };
 
 class Login {
 public:
-	void checkValid();
-	bool isEqual();
+	void CheckValid();
+	bool IsEqual();
 };
 
 class LogoutUI {
 public:
-	void startInterface();
-	void clickLogout();
+	void StartInterface();
+	void ClickLogout();
 };
 
 class Logout {
 public:
-	void exitSystemAccess();
+	void ExitSystemAccess();
 };
 
 class RegisterBikeUI {
 public:
-	void startInterface();
-	void registerNewBike();
+	void StartInterface();
+	void RegisterNewBike();
 };
 
 class RegisterBike {
 public:
-	void createNewBike();
+	void CreateNewBike();
 };
 
 class RentBikeUI {
 public:
-	void startInterface();
-	void rentBike();
+	void StartInterface();
+	void RentBike();
 
 };
 
 class RentBike {
 public:
-	void addNewBike();
+	void AddNewBike();
 };
 
 class CheckBikeRentalInformationUI {
 public:
-	void startInterface();
-	void checkBikeRentalInformation();
+	void StartInterface();
+	void CheckBikeRentalInformation();
 };
 
 class CheckBikeRentalInformation {
 public:
-	void showBikeRentalInformation();
+	void ShowBikeRentalInformation();
 };
