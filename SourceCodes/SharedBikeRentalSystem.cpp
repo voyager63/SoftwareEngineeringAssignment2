@@ -46,7 +46,7 @@ void UserCollection::AddNewUser(UserInput user_input) {
 	user_list_[num_users_++] = new User(user_input.id, user_input.password, user_input.phone_number, user_input.user_type);
 }
 
-User* UserCollection::GetUserByID(string id) {
+User* UserCollection::GetUserById(string id) {
 	for (int i = 0; i < num_users_; i++) {
 		if (user_list_[i]->GetId() == id) return user_list_[i];
 	}
@@ -78,7 +78,7 @@ void BikeCollection::AddNewBike(BikeInput bike_input) {
 	bike_list_[num_bikes_++] = new Bike(bike_input.bike_id, bike_input.bike_product_name);
 }
 
-Bike* BikeCollection::GetBikeByID(string bike_id) {
+Bike* BikeCollection::GetBikeById(string bike_id) {
 	for (int i = 0; i < num_bikes_; i++) {
 		if (bike_list_[i]->GetBikeDetails().bike_id == bike_id) return bike_list_[i];
 	}
@@ -128,54 +128,59 @@ User* AccessManager::GetCurrentUser() {
 
 //Sign up
 
-SignUp::SignUp(ifstream* if_stream, UserCollection* user_collection) {
+SignUp::SignUp(ifstream* if_stream, ofstream* of_stream, UserCollection* user_collection) { //SignUp 객체를 만들며 SignUpUI 생성. 그후 SignUpUI의 interface 호출.
 	user_collection_ = user_collection;
-	sign_up_ui_ = new SignUpUI(this);
-	sign_up_ui_->StartInterface(if_stream);
+	sign_up_ui_ = new SignUpUI(if_stream, of_stream ,this);
+	sign_up_ui_->StartInterface();
 }
 
-SignUpUI::SignUpUI(SignUp* sign_up) {
+SignUpUI::SignUpUI(ifstream* if_stream, ofstream* of_stream, SignUp* sign_up) {
+	if_stream_ = if_stream;
+	of_stream_ = of_stream;
 	sign_up_ = sign_up;
 }
 
 
-void SignUpUI::StartInterface(ifstream* if_stream)
+void SignUpUI::StartInterface() //사용자로 부터 입력을 받음.
 {
 	UserInput user_input;
 	user_input.user_type = 'M';
-	*if_stream >> user_input.id >> user_input.password >> user_input.phone_number;
+	*if_stream_ >> user_input.id >> user_input.password >> user_input.phone_number;
 	CreateNewUser(user_input);
 }
 
 void SignUpUI::CreateNewUser(UserInput user_input)
 {
-	sign_up_->AddNewUser(user_input);
+	UserInput registered_user = sign_up_->AddNewUser(user_input); //control을 호출하고, control로 부터 값을 받아옴.
+	*of_stream_ << "1.1. 회원가입" << endl << "> " << registered_user.id << ' ' << registered_user.password << ' ' << registered_user.phone_number << endl;
+	// control로부터 받아온 결과를 출력.
 }
 
-void SignUp::AddNewUser(UserInput user_input) {
+UserInput SignUp::AddNewUser(UserInput user_input) {
 	user_collection_->AddNewUser(user_input);
-	//id, password, phone_number 출력 코드 위치
+	return user_input; // boundary에게 값을 넘겨줌.
 }
 
 
 
 //Login
 
-Login::Login(ifstream* if_stream, UserCollection* user_collection, AccessManager* access_manager) {
+Login::Login(ifstream* if_stream, ofstream* of_stream, UserCollection* user_collection, AccessManager* access_manager) {
 	user_collection_ = user_collection;
 	access_manager_ = access_manager;
-	login_ui_ = new LoginUI(this);
-	login_ui_->StartInterface(if_stream);
+	login_ui_ = new LoginUI(if_stream, of_stream, this);
+	login_ui_->StartInterface();
 }
 
 
-void Login::CheckValid(string input_id, string input_password) {
-	User* user = user_collection_->GetUserByID(input_id);
+bool Login::IsValid(string input_id, string input_password) {
+	User* user = user_collection_->GetUserById(input_id);
 	string user_password = user->GetPassword();
 	if (IsEqual(input_password, user_password)) {
 		access_manager_->Connect(user);
-		// id, password 출력 코드 위치
+		return true;
 	}
+	return false;
 }
 
 bool Login::IsEqual(string input_password, string user_password) {
@@ -183,26 +188,36 @@ bool Login::IsEqual(string input_password, string user_password) {
 	else return false;
 }
 
-LoginUI::LoginUI(Login* login) {
+LoginUI::LoginUI(ifstream* if_stream, ofstream* of_stream, Login* login) {
+	if_stream_ = if_stream;
+	of_stream_ = of_stream;
 	login_ = login;
 }
 
-void LoginUI::StartInterface(ifstream* if_stream) {
+void LoginUI::StartInterface() {
 	string user_id, user_password;
-	*if_stream >> user_id >> user_password;
+	*if_stream_ >> user_id >> user_password;
 	ClickLogin(user_id, user_password);
 }
 
 void LoginUI::ClickLogin(string user_id, string user_password) {
-	login_->CheckValid(user_id, user_password);
+	if (login_->IsValid(user_id, user_password)) {
+		*of_stream_ << "2.1. 로그인" << endl << "> " << user_id << ' ' << user_password << endl;
+	}
 }
 
 //Logout
 
-Logout::Logout(AccessManager* access_manager) {
+Logout::Logout(ifstream* if_stream, ofstream* of_stream, AccessManager* access_manager) {
 	access_manager_ = access_manager;
-	logout_ui_ = new LogoutUI();
+	logout_ui_ = new LogoutUI(if_stream, of_stream, this);
 	logout_ui_->StartInterface();
+}
+
+LogoutUI::LogoutUI(ifstream* if_stream, ofstream* of_stream, Logout* logout) {
+	if_stream_ = if_stream;
+	of_stream_ = of_stream;
+	logout_ = logout;
 }
 
 void LogoutUI::StartInterface() {
@@ -210,81 +225,97 @@ void LogoutUI::StartInterface() {
 }
 
 void LogoutUI::ClickLogout() {
-	logout_->ExitSystemAccess();
+	string current_user_id = logout_->ExitSystemAccess();
+	*of_stream_ << "2.2. 로그아웃" << endl << "> " << current_user_id << endl;
 }
-
-void Logout::ExitSystemAccess() {
+string Logout::ExitSystemAccess() {
+	User* current_user = access_manager_->GetCurrentUser();
+	string current_user_id = current_user->GetId();
 	access_manager_->Disconnect();
+	return current_user_id;
 }
 
 //Register a new bike
 
-RegisterBike::RegisterBike(ifstream* if_stream, BikeCollection* bike_collection, AccessManager* access_manager) {
+RegisterBike::RegisterBike(ifstream* if_stream, ofstream* of_stream, BikeCollection* bike_collection, AccessManager* access_manager) {
 	bike_collection_ = bike_collection;
 	access_manager_ = access_manager;
-	register_bike_ui_ = new RegisterBikeUI(this);
-	register_bike_ui_->StartInterface(if_stream);
+	register_bike_ui_ = new RegisterBikeUI(if_stream, of_stream, this);
+	register_bike_ui_->StartInterface();
 }
 
-RegisterBikeUI::RegisterBikeUI(RegisterBike* register_bike) {
+RegisterBikeUI::RegisterBikeUI(ifstream* if_stream, ofstream* of_stream, RegisterBike* register_bike) {
+	if_stream_ = if_stream;
+	of_stream_ = of_stream;
 	register_bike_ = register_bike;
 }
 
-void RegisterBikeUI::StartInterface(ifstream* if_stream) {
+void RegisterBikeUI::StartInterface() {
 	BikeInput bike_input;
-	*if_stream >> bike_input.bike_id >> bike_input.bike_product_name;
+	*if_stream_ >> bike_input.bike_id >> bike_input.bike_product_name;
 	RegisterNewBike(bike_input);
 }
 
 void RegisterBikeUI::RegisterNewBike(BikeInput bike_input) {
-	register_bike_->CreateNewBike(bike_input);
+	BikeInput registered_bike = register_bike_->CreateNewBike(bike_input);
+	*of_stream_ << "3.1. 자전거 등록" << endl << "> " << registered_bike.bike_id << ' ' << registered_bike.bike_product_name << endl;
 }
 
-void RegisterBike::CreateNewBike(BikeInput bike_input) {
+BikeInput RegisterBike::CreateNewBike(BikeInput bike_input) {
 	User* current_user = access_manager_->GetCurrentUser();
-	if (current_user->IsAdmin()) bike_collection_->AddNewBike(bike_input);
+	if (current_user->IsAdmin()) {
+		bike_collection_->AddNewBike(bike_input);
+		return bike_input;
+	}
 }
 
 //Rent a bike
 
-RentBike::RentBike(ifstream* if_stream, BikeCollection* bike_collection, AccessManager* access_manager) {
+RentBike::RentBike(ifstream* if_stream, ofstream* of_stream, BikeCollection* bike_collection, AccessManager* access_manager) {
 	bike_collection_ = bike_collection;
 	access_manager_ = access_manager;
-	rent_bike_ui_ = new RentBikeUI(this);
-	rent_bike_ui_->StartInterface(if_stream);
+	rent_bike_ui_ = new RentBikeUI(if_stream, of_stream, this);
+	rent_bike_ui_->StartInterface();
 }
 
-RentBikeUI::RentBikeUI(RentBike* rent_bike) {
+RentBikeUI::RentBikeUI(ifstream* if_stream, ofstream* of_stream, RentBike* rent_bike) {
+	if_stream_ = if_stream;
+	of_stream_ = of_stream;
 	rent_bike_ = rent_bike;
 }
 
-void RentBikeUI::StartInterface(ifstream* if_stream) {
+void RentBikeUI::StartInterface() {
 	string bike_id;
-	*if_stream >> bike_id;
+	*if_stream_ >> bike_id;
 	HireBike(bike_id);
 }
 
 void RentBikeUI::HireBike(string bike_id) {
-	rent_bike_->AddNewBike(bike_id);
+	BikeInput rented_bike = rent_bike_->AddNewBike(bike_id);
+	*of_stream_ << "4.1. 자전거 대여" << endl << "> " << rented_bike.bike_id << ' ' << rented_bike.bike_product_name << endl;
 }
 
-void RentBike::AddNewBike(string bike_id) {
+BikeInput RentBike::AddNewBike(string bike_id) {
 	User* current_user = access_manager_->GetCurrentUser();
 	if (current_user->IsMember()) {
-		Bike* selected_bike = bike_collection_->GetBikeByID(bike_id);
+		Bike* selected_bike = bike_collection_->GetBikeById(bike_id);
 		current_user->GetUserBikes()->AddNewBike(selected_bike);
+		return selected_bike->GetBikeDetails();
 	}
 }
 
 //Check bike rental information
 
-CheckBikeRentalInformation::CheckBikeRentalInformation(AccessManager* access_manager){
+CheckBikeRentalInformation::CheckBikeRentalInformation(ifstream* if_stream, ofstream* of_stream, AccessManager* access_manager){
+	of_stream_ = of_stream;
 	access_manager_ = access_manager;
-	check_bike_rental_information_ui_ = new CheckBikeRentalInformationUI(this);
+	check_bike_rental_information_ui_ = new CheckBikeRentalInformationUI(if_stream, of_stream, this);
 	check_bike_rental_information_ui_->StartInterface();
 }
 
-CheckBikeRentalInformationUI::CheckBikeRentalInformationUI(CheckBikeRentalInformation* check_bike_rental_information) {
+CheckBikeRentalInformationUI::CheckBikeRentalInformationUI(ifstream* if_stream, ofstream* of_stream, CheckBikeRentalInformation* check_bike_rental_information) {
+	if_stream_ = if_stream;
+	of_stream_ = of_stream;
 	check_bike_rental_information_ = check_bike_rental_information;
 }
 
@@ -299,9 +330,11 @@ void CheckBikeRentalInformationUI::ViewBikeRentalInformation() {
 void CheckBikeRentalInformation::ShowBikeRentalInformation() {
 	User* current_user = access_manager_->GetCurrentUser();
 	if (current_user->IsMember()) {
+		*of_stream_ << "5.1. 자전거 대여 리스트" << endl;
 		RentedBikeCollection* rented_bikes = current_user->GetUserBikes();
 		for (int i = 0; i < rented_bikes->GetNumRentedBikes(); i++) {
-			rented_bikes->GetRentedBikes()[i]->GetBikeDetails();
+			BikeInput rented_bike = rented_bikes->GetRentedBikes()[i]->GetBikeDetails();
+			*of_stream_ << "> " << rented_bike.bike_id << ' ' << rented_bike.bike_product_name << endl;
 		}
 	}
 }

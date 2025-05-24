@@ -34,7 +34,7 @@ int main(){
 				{
 					case 1: //회원가입
 					{
-						SignUp sign_up(&in_fp, &user_collection);
+						SignUp sign_up(&in_fp, &out_fp, &user_collection);
 						break;
 					}
 				}
@@ -46,12 +46,12 @@ int main(){
 				{
 					case 1: //로그인
 					{
-						Login login(&in_fp, &user_collection, &access_manager);
+						Login login(&in_fp, &out_fp, &user_collection, &access_manager);
 						break;
 					}
 					case 2: //로그아웃
 					{
-						Logout logout(&access_manager);
+						Logout logout(&in_fp, &out_fp, &access_manager);
 						break;
 					}
 				}
@@ -63,7 +63,7 @@ int main(){
 				{
 					case 1: //자전거 등록
 					{
-						RegisterBike register_bike(&in_fp, &bike_collection, &access_manager);
+						RegisterBike register_bike(&in_fp, &out_fp, &bike_collection, &access_manager);
 						break;
 					}
 				}
@@ -75,7 +75,7 @@ int main(){
 				{
 					case 1: //자전거 대여
 					{
-						RentBike rent_bike(&in_fp, &bike_collection, &access_manager);
+						RentBike rent_bike(&in_fp, &out_fp, &bike_collection, &access_manager);
 						break;
 					}
 				}
@@ -87,7 +87,7 @@ int main(){
 				{
 					case 1: //대여 중인 자전거 정보 조회
 					{
-						CheckBikeRentalInformation check_bike_rental_information(&access_manager);
+						CheckBikeRentalInformation check_bike_rental_information(&in_fp, &out_fp, &access_manager);
 						break;
 					}
 				}
@@ -100,6 +100,7 @@ int main(){
 					case 1: //종료
 					{
 						is_program_exit = 1;
+						out_fp << "6.1. 종료" << endl;
 						break;
 					}
 				}

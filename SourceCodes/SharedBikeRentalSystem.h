@@ -3,6 +3,26 @@
 
 using namespace std;
 
+class User;
+class Bike;
+class UserCollection;
+class BikeCollection;
+class RentedBikeCollection;
+class AccessManager;
+class SignUpUI;
+class SignUp;
+class LoginUI;
+class Login;
+class LogoutUI;
+class Logout;
+class RegisterBikeUI;
+class RegisterBike;
+class RentBikeUI;
+class RentBike;
+class CheckBikeRentalInformationUI;
+class CheckBikeRentalInformation;
+
+
 
 //Input Type
 struct UserInput {
@@ -46,7 +66,7 @@ private:
 public:
 	UserCollection(string admin_id, string admin_password);
 	void AddNewUser(UserInput user_input);
-	User* GetUserByID(string id);
+	User* GetUserById(string id);
 };
 
 //Bike
@@ -67,8 +87,9 @@ private:
 	Bike* bike_list_[50];
 	int num_bikes_;
 public:
+	BikeCollection();
 	void AddNewBike(BikeInput bike_input);
-	Bike* GetBikeByID(string bike_id);
+	Bike* GetBikeById(string bike_id);
 };
 
 //RentedBikeCollection
@@ -78,6 +99,7 @@ private:
 	Bike* owned_rented_bike_[50];
 	int num_rented_bikes_;
 public:
+	RentedBikeCollection();
 	void AddNewBike(Bike* bike);
 	int GetNumRentedBikes();
 	Bike** GetRentedBikes();
@@ -89,6 +111,7 @@ class AccessManager {
 private:
 	User* current_user_;
 public:
+	AccessManager();
 	void Connect(User* user);
 	void Disconnect();
 	User* GetCurrentUser();
@@ -101,9 +124,11 @@ public:
 class SignUpUI {
 private:
 	SignUp* sign_up_;
+	ifstream* if_stream_;
+	ofstream* of_stream_;
 public:
-	SignUpUI(SignUp* sign_up);
-	void StartInterface(ifstream* if_stream);
+	SignUpUI(ifstream* if_stream, ofstream* of_stream, SignUp* sign_up);
+	void StartInterface();
 	void CreateNewUser(UserInput);
 };
 
@@ -112,8 +137,8 @@ private:
 	SignUpUI* sign_up_ui_;
 	UserCollection* user_collection_;
 public:
-	SignUp(ifstream* if_stream, UserCollection* user_collection);
-	void AddNewUser(UserInput user_input);
+	SignUp(ifstream* if_stream, ofstream* of_stream, UserCollection* user_collection);
+	UserInput AddNewUser(UserInput user_input);
 };
 
 //Login
@@ -121,9 +146,11 @@ public:
 class LoginUI{
 private:
 	Login* login_;
+	ifstream* if_stream_;
+	ofstream* of_stream_;
 public:
-	LoginUI(Login* login);
-	void StartInterface(ifstream* if_stream);
+	LoginUI(ifstream* if_stream, ofstream* of_stream, Login* login);
+	void StartInterface();
 	void ClickLogin(string user_id, string user_password);
 };
 
@@ -133,8 +160,8 @@ private:
 	UserCollection* user_collection_;
 	AccessManager* access_manager_;
 public:
-	Login(ifstream* if_stream, UserCollection* user_collection, AccessManager* access_manager);
-	void CheckValid(string input_id, string input_password);
+	Login(ifstream* if_stream, ofstream* of_stream, UserCollection* user_collection, AccessManager* access_manager);
+	bool IsValid(string input_id, string input_password);
 	bool IsEqual(string input_password, string user_password);
 };
 
@@ -143,7 +170,10 @@ public:
 class LogoutUI {
 private:
 	Logout* logout_;
+	ifstream* if_stream_;
+	ofstream* of_stream_;
 public:
+	LogoutUI(ifstream* if_stream, ofstream* of_stream, Logout* logout);
 	void StartInterface();
 	void ClickLogout();
 };
@@ -153,8 +183,8 @@ private:
 	LogoutUI* logout_ui_;
 	AccessManager* access_manager_;
 public:
-	Logout(AccessManager* access_manager);
-	void ExitSystemAccess();
+	Logout(ifstream* if_stream, ofstream* of_stream, AccessManager* access_manager);
+	string ExitSystemAccess();
 };
 
 //Register a new Bike
@@ -162,9 +192,11 @@ public:
 class RegisterBikeUI {
 private:
 	RegisterBike* register_bike_;
+	ifstream* if_stream_;
+	ofstream* of_stream_;
 public:
-	RegisterBikeUI(RegisterBike* register_bike);
-	void StartInterface(ifstream* if_stream);
+	RegisterBikeUI(ifstream* if_stream, ofstream* of_stream, RegisterBike* register_bike);
+	void StartInterface();
 	void RegisterNewBike(BikeInput bike_input);
 };
 
@@ -174,8 +206,8 @@ private:
 	BikeCollection* bike_collection_;
 	AccessManager* access_manager_;
 public:
-	RegisterBike(ifstream* if_stream, BikeCollection* bike_collection, AccessManager* access_manager);
-	void CreateNewBike(BikeInput bike_input);
+	RegisterBike(ifstream* if_stream, ofstream* of_stream, BikeCollection* bike_collection, AccessManager* access_manager);
+	BikeInput CreateNewBike(BikeInput bike_input);
 };
 
 //Rent a bike
@@ -183,9 +215,11 @@ public:
 class RentBikeUI {
 private:
 	RentBike* rent_bike_;
+	ifstream* if_stream_;
+	ofstream* of_stream_;
 public:
-	RentBikeUI(RentBike* rent_bike);
-	void StartInterface(ifstream* if_stream);
+	RentBikeUI(ifstream* if_stream, ofstream* of_stream, RentBike* rent_bike);
+	void StartInterface();
 	void HireBike(string bike_id);
 };
 
@@ -195,8 +229,8 @@ private:
 	BikeCollection* bike_collection_;
 	AccessManager* access_manager_;
 public:
-	RentBike(ifstream* if_stream, BikeCollection* bike_collection, AccessManager* access_manager);
-	void AddNewBike(string bike_id);
+	RentBike(ifstream* if_stream, ofstream* of_stream, BikeCollection* bike_collection, AccessManager* access_manager);
+	BikeInput AddNewBike(string bike_id);
 };
 
 //Check bike rental information
@@ -204,8 +238,10 @@ public:
 class CheckBikeRentalInformationUI {
 private:
 	CheckBikeRentalInformation* check_bike_rental_information_;
+	ifstream* if_stream_;
+	ofstream* of_stream_;
 public:
-	CheckBikeRentalInformationUI(CheckBikeRentalInformation* check_bike_rental_information);
+	CheckBikeRentalInformationUI(ifstream* if_stream, ofstream* of_stream, CheckBikeRentalInformation* check_bike_rental_information);
 	void StartInterface();
 	void ViewBikeRentalInformation();
 };
@@ -213,8 +249,9 @@ public:
 class CheckBikeRentalInformation {
 private:
 	CheckBikeRentalInformationUI* check_bike_rental_information_ui_;
+	ofstream* of_stream_;
 	AccessManager* access_manager_;
 public:
-	CheckBikeRentalInformation(AccessManager* access_manager);
+	CheckBikeRentalInformation(ifstream* if_stream, ofstream* of_stream, AccessManager* access_manager);
 	void ShowBikeRentalInformation();
 };
