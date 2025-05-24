@@ -152,7 +152,7 @@ void SignUpUI::StartInterface() //사용자로 부터 입력을 받음.
 void SignUpUI::CreateNewUser(UserInput user_input)
 {
 	UserInput registered_user = sign_up_->AddNewUser(user_input); //control을 호출하고, control로 부터 값을 받아옴.
-	*of_stream_ << "1.1. 회원가입" << endl << "> " << registered_user.id << ' ' << registered_user.password << ' ' << registered_user.phone_number << endl;
+	*of_stream_ << "1.1. 회원가입" << endl << "> " << registered_user.id << ' ' << registered_user.password << ' ' << registered_user.phone_number << endl << endl;
 	// control로부터 받아온 결과를 출력.
 }
 
@@ -202,7 +202,7 @@ void LoginUI::StartInterface() {
 
 void LoginUI::ClickLogin(string user_id, string user_password) {
 	if (login_->IsValid(user_id, user_password)) {
-		*of_stream_ << "2.1. 로그인" << endl << "> " << user_id << ' ' << user_password << endl;
+		*of_stream_ << "2.1. 로그인" << endl << "> " << user_id << ' ' << user_password << endl << endl;
 	}
 }
 
@@ -226,7 +226,7 @@ void LogoutUI::StartInterface() {
 
 void LogoutUI::ClickLogout() {
 	string current_user_id = logout_->ExitSystemAccess();
-	*of_stream_ << "2.2. 로그아웃" << endl << "> " << current_user_id << endl;
+	*of_stream_ << "2.2. 로그아웃" << endl << "> " << current_user_id << endl << endl;
 }
 string Logout::ExitSystemAccess() {
 	User* current_user = access_manager_->GetCurrentUser();
@@ -258,7 +258,7 @@ void RegisterBikeUI::StartInterface() {
 
 void RegisterBikeUI::RegisterNewBike(BikeInput bike_input) {
 	BikeInput registered_bike = register_bike_->CreateNewBike(bike_input);
-	*of_stream_ << "3.1. 자전거 등록" << endl << "> " << registered_bike.bike_id << ' ' << registered_bike.bike_product_name << endl;
+	*of_stream_ << "3.1. 자전거 등록" << endl << "> " << registered_bike.bike_id << ' ' << registered_bike.bike_product_name << endl << endl;
 }
 
 BikeInput RegisterBike::CreateNewBike(BikeInput bike_input) {
@@ -292,7 +292,7 @@ void RentBikeUI::StartInterface() {
 
 void RentBikeUI::HireBike(string bike_id) {
 	BikeInput rented_bike = rent_bike_->AddNewBike(bike_id);
-	*of_stream_ << "4.1. 자전거 대여" << endl << "> " << rented_bike.bike_id << ' ' << rented_bike.bike_product_name << endl;
+	*of_stream_ << "4.1. 자전거 대여" << endl << "> " << rented_bike.bike_id << ' ' << rented_bike.bike_product_name << endl << endl;
 }
 
 BikeInput RentBike::AddNewBike(string bike_id) {
@@ -336,5 +336,35 @@ void CheckBikeRentalInformation::ShowBikeRentalInformation() {
 			BikeInput rented_bike = rented_bikes->GetRentedBikes()[i]->GetBikeDetails();
 			*of_stream_ << "> " << rented_bike.bike_id << ' ' << rented_bike.bike_product_name << endl;
 		}
+		*of_stream_ << endl;
 	}
 }
+
+
+Exit::Exit(ifstream* if_stream, ofstream* of_stream, int* is_program_exit) {
+	of_stream_ = of_stream;
+	is_program_exit_ = is_program_exit;
+	exit_ui_ = new ExitUI(if_stream, of_stream, this);
+	exit_ui_->StartInterface();
+}
+
+ExitUI::ExitUI(ifstream* if_stream, ofstream* of_stream, Exit* exit) {
+	if_stream_ = if_stream;
+	of_stream_ = of_stream;
+	exit_ = exit;
+}
+
+void ExitUI::StartInterface() {
+	ExitSystem();
+}
+
+void ExitUI::ExitSystem() {
+	exit_->ExitSystem();
+}
+
+void Exit::ExitSystem() {
+	*is_program_exit_ = 1;
+	*of_stream_ << "6.1. 종료";
+}
+
+

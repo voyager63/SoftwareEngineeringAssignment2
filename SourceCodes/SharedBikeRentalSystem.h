@@ -21,7 +21,8 @@ class RentBikeUI;
 class RentBike;
 class CheckBikeRentalInformationUI;
 class CheckBikeRentalInformation;
-
+class ExitUI;
+class Exit;
 
 
 //Input Type
@@ -254,4 +255,25 @@ private:
 public:
 	CheckBikeRentalInformation(ifstream* if_stream, ofstream* of_stream, AccessManager* access_manager);
 	void ShowBikeRentalInformation();
+};
+
+class ExitUI {
+private:
+	Exit* exit_;
+	ifstream* if_stream_;
+	ofstream* of_stream_;
+public:
+	ExitUI(ifstream* if_stream, ofstream* of_stream, Exit* exit);
+	void StartInterface();
+	void ExitSystem();
+};
+
+class Exit {
+private:
+	ExitUI* exit_ui_;
+	int* is_program_exit_;
+	ofstream* of_stream_;
+public:
+	Exit(ifstream* if_stream, ofstream* of_stream, int* is_program_exit);
+	void ExitSystem();
 };

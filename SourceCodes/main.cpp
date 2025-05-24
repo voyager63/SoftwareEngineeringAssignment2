@@ -99,8 +99,7 @@ int main(){
 				{
 					case 1: //종료
 					{
-						is_program_exit = 1;
-						out_fp << "6.1. 종료" << endl;
+						Exit(&in_fp, &out_fp, &is_program_exit);
 						break;
 					}
 				}
