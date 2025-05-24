@@ -592,7 +592,7 @@
 											"top": 507,
 											"width": 169.720703125,
 											"height": 13,
-											"text": "-ID",
+											"text": "-id",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5971,9 +5971,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2hl0Vb3SrfE="
 							},
-							"name": "ID",
-							"visibility": "private",
-							"type": ""
+							"name": "id",
+							"visibility": "private"
 						},
 						{
 							"_type": "UMLAttribute",
