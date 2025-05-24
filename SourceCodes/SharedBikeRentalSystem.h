@@ -131,7 +131,7 @@ private:
 public:
 	SignUpUI(ifstream* input_stream, ofstream* output_stream, SignUp* sign_up);
 	void StartInterface();
-	void CreateNewUser(UserInput);
+	void CreateNewUser(UserInput user_input);
 };
 
 class SignUp {
