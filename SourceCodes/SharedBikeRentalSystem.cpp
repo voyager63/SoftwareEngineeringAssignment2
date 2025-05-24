@@ -103,6 +103,20 @@ Bike** RentedBikeCollection::GetRentedBikes() {
 	return owned_rented_bike_;
 }
 
+void RentedBikeCollection::SortBikeById() {
+	for (int i = 0; i < num_rented_bikes_ - 1; i++) {
+		int min = i;
+		for (int j = i + 1; j < num_rented_bikes_; j++) {
+			if (owned_rented_bike_[min]->GetBikeDetails().bike_id > owned_rented_bike_[j]->GetBikeDetails().bike_id) {
+				min = j;
+			}
+		}
+		Bike* temp = owned_rented_bike_[i];
+		owned_rented_bike_[i] = owned_rented_bike_[min];
+		owned_rented_bike_[min] = temp;
+	}
+}
+
 
 
 //AccessManager
@@ -330,6 +344,7 @@ void CheckBikeRentalInformationUI::ViewBikeRentalInformation() {
 void CheckBikeRentalInformation::ShowBikeRentalInformation() {
 	User* current_user = access_manager_->GetCurrentUser();
 	if (current_user->IsMember()) {
+		current_user->GetUserBikes()->SortBikeById(); // 대여한 자전거를 ID순으로 정렬함.
 		*of_stream_ << "5.1. 자전거 대여 리스트" << endl;
 		RentedBikeCollection* rented_bikes = current_user->GetUserBikes();
 		for (int i = 0; i < rented_bikes->GetNumRentedBikes(); i++) {

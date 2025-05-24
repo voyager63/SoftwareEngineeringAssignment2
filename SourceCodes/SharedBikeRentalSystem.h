@@ -104,6 +104,7 @@ public:
 	void AddNewBike(Bike* bike);
 	int GetNumRentedBikes();
 	Bike** GetRentedBikes();
+	void SortBikeById();
 };
 
 //AccessManager
