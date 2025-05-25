@@ -1,8 +1,6 @@
 #include "SharedBikeRentalSystem.h"
 
-//entity
 
-//User
 User::User(string id, string password, string phone_number, char user_type) {
 	id_ = id;
 	password_ = password;
@@ -35,9 +33,10 @@ bool User::IsMember() {
 
 
 
-//UserCollection
 UserCollection::UserCollection(string admin_id, string admin_password) {
 	num_users_ = 0;
+
+	//생성될 때 관리자를 생성함.
 	user_list_[num_users_++] = new User(admin_id, admin_password, "", 'A');
 }
 
@@ -46,6 +45,7 @@ void UserCollection::AddNewUser(UserInput user_input) {
 }
 
 User* UserCollection::GetUserById(string id) {
+	//입력한 ID와 같은 ID를 가진 이용자를 반환함.
 	for (int i = 0; i < num_users_; i++) {
 		if (user_list_[i]->GetId() == id) return user_list_[i];
 	}
@@ -53,7 +53,7 @@ User* UserCollection::GetUserById(string id) {
 
 
 
-//Bike
+
 Bike::Bike(string bike_id, string bike_product_name) {
 	bike_id_ = bike_id;
 	bike_product_name_ = bike_product_name;
@@ -67,8 +67,6 @@ BikeInput Bike::GetBikeDetails() {
 }
 
 
-
-//BikeCollection
 BikeCollection::BikeCollection() {
 	num_bikes_ = 0;
 }
@@ -78,6 +76,7 @@ void BikeCollection::AddNewBike(BikeInput bike_input) {
 }
 
 Bike* BikeCollection::GetBikeById(string bike_id) {
+	//입력한 자전거 ID와 같은 ID를 가진 자전거를 반환함.
 	for (int i = 0; i < num_bikes_; i++) {
 		if (bike_list_[i]->GetBikeDetails().bike_id == bike_id) return bike_list_[i];
 	}
@@ -85,7 +84,7 @@ Bike* BikeCollection::GetBikeById(string bike_id) {
 
 
 
-//RentedBikeCollection
+
 RentedBikeCollection::RentedBikeCollection() {
 	num_rented_bikes_ = 0;
 }
@@ -103,6 +102,7 @@ Bike** RentedBikeCollection::GetRentedBikes() {
 }
 
 void RentedBikeCollection::SortBikeById() {
+	//선택 정렬을 통해 자전거 ID의 오름차순으로 대여한 자전거를 정렬함.
 	for (int i = 0; i < num_rented_bikes_ - 1; i++) {
 		int min = i;
 		for (int j = i + 1; j < num_rented_bikes_; j++) {
@@ -117,13 +117,12 @@ void RentedBikeCollection::SortBikeById() {
 }
 
 
-
-//AccessManager
 AccessManager::AccessManager() {
 	current_user_ = NULL;
 }
 
 void AccessManager::Connect(User* user) {
+	//현재 로그인된 이용자를 명시함.
 	current_user_ = user;
 }
 
@@ -137,25 +136,33 @@ User* AccessManager::GetCurrentUser() {
 
 
 
-//boundary and control
-
-//Sign up
-
-SignUp::SignUp(ifstream* input_stream, ofstream* output_stream, UserCollection* user_collection) { //SignUp 객체를 만들며 SignUpUI 생성. 그후 SignUpUI의 interface 호출.
+//회원 가입 기능을 구현하기 위한 Class의 구현부
+SignUp::SignUp(ifstream* input_stream, ofstream* output_stream, UserCollection* user_collection) {
+	//UserCollection Entity object의 함수를 호출하기 위한 변수를 초기화함.
 	user_collection_ = user_collection;
-	sign_up_ui_ = new SignUpUI(input_stream, output_stream,this);
+
+	//SignUpUI Boundary object를 생성함.
+	sign_up_ui_ = new SignUpUI(input_stream, output_stream, this);
+
+	//Boundary object의 StartInterface() 함수를 호출함.
 	sign_up_ui_->StartInterface();
 }
 
 SignUpUI::SignUpUI(ifstream* input_stream, ofstream* output_stream, SignUp* sign_up) {
+	//파일로부터 입력받기 위해 사용될 변수를 초기화함.
 	input_stream_ = input_stream;
+
+	//파일에 출력하기 위해 사용될 변수를 초기화함.
 	output_stream_ = output_stream;
+
+	//SignUp Control object의 함수를 호출하기 위한 변수를 초기화함.
 	sign_up_ = sign_up;
 }
 
 
-void SignUpUI::StartInterface() //사용자로 부터 입력을 받음.
+void SignUpUI::StartInterface()
 {
+	//회원 가입에 필요한 필수 입력 정보를 입력받음.
 	UserInput user_input;
 	user_input.user_type = 'M';
 	*input_stream_ >> user_input.id >> user_input.password >> user_input.phone_number;
@@ -164,50 +171,72 @@ void SignUpUI::StartInterface() //사용자로 부터 입력을 받음.
 
 void SignUpUI::CreateNewUser(UserInput user_input)
 {
-	UserInput registered_user = sign_up_->AddNewUser(user_input); //control을 호출하고, control로 부터 값을 받아옴.
+	//Control object의 함수를 호출하고, Control object로부터 반환받은 값을 출력함.
+	UserInput registered_user = sign_up_->AddNewUser(user_input);
 	*output_stream_ << "1.1. 회원가입" << endl << "> " << registered_user.id << ' ' << registered_user.password << ' ' << registered_user.phone_number << endl << endl;
-	// control로부터 받아온 결과를 출력.
 }
 
 UserInput SignUp::AddNewUser(UserInput user_input) {
 	user_collection_->AddNewUser(user_input);
-	return user_input; // boundary에게 값을 넘겨줌.
+
+	//Boundary object에게 값을 반환함.
+	return user_input;
 }
 
 
 
-//Login
-
+//로그인 기능을 구현하기 위한 Class의 구현부
 LoginUI::LoginUI(ifstream* input_stream, ofstream* output_stream, Login* login) {
+	//파일로부터 입력받기 위해 사용될 변수를 초기화함.
 	input_stream_ = input_stream;
+
+	//파일에 출력하기 위해 사용될 변수를 초기화함.
 	output_stream_ = output_stream;
+
+	//Login Control object의 함수를 호출하기 위한 변수를 초기화함.
 	login_ = login;
 }
 
 Login::Login(ifstream* input_stream, ofstream* output_stream, UserCollection* user_collection, AccessManager* access_manager) {
+	//UserCollection Entity object의 함수를 호출하기 위한 변수를 초기화함.
 	user_collection_ = user_collection;
+
+	//AccessManager Entity object의 함수를 호출하기 위한 변수를 초기화함.
 	access_manager_ = access_manager;
+
+	//LoginUI Boundary object를 생성함.
 	login_ui_ = new LoginUI(input_stream, output_stream, this);
+
+	//Boundary object의 StartInterface() 함수를 호출함.
 	login_ui_->StartInterface();
 }
 
 void LoginUI::StartInterface() {
+	//로그인에 필요한 입력값을 입력받음.
 	string user_id, user_password;
 	*input_stream_ >> user_id >> user_password;
 	ClickLogin(user_id, user_password);
 }
 
 void LoginUI::ClickLogin(string user_id, string user_password) {
+	//로그인에 성공했다면 로그인된 이용자의 ID를 출력함.
 	if (login_->IsValid(user_id, user_password)) {
 		*output_stream_ << "2.1. 로그인" << endl << "> " << user_id << ' ' << user_password << endl << endl;
 	}
 }
 
 bool Login::IsValid(string input_id, string input_password) {
+	//입력받은 ID를 가진 이용자를 받음.
 	User* user = user_collection_->GetUserById(input_id);
+
+	//입력받은 ID를 가진 이용자의 비밀번호를 받음.
 	string user_password = user->GetPassword();
+
+	//입력한 비밀번호와 저장된 비밀번호가 일치하면 로그인시킴.
 	if (IsEqual(input_password, user_password)) {
 		access_manager_->Connect(user);
+
+		//로그인에 성공했다는 것을 Boundary object에게 전달함.
 		return true;
 	}
 	return false;
@@ -219,17 +248,27 @@ bool Login::IsEqual(string input_password, string user_password) {
 }
 
 
-//Logout
 
+//로그아웃 기능을 구현하기 위한 Class의 구현부
 LogoutUI::LogoutUI(ifstream* input_stream, ofstream* output_stream, Logout* logout) {
+	//파일로부터 입력받기 위해 사용될 변수를 초기화함.
 	input_stream_ = input_stream;
+
+	//파일에 출력하기 위해 사용될 변수를 초기화함.
 	output_stream_ = output_stream;
+
+	//Logout Control object의 함수를 호출하기 위한 변수를 초기화함.
 	logout_ = logout;
 }
 
 Logout::Logout(ifstream* input_stream, ofstream* output_stream, AccessManager* access_manager) {
+	//AccessManager Entity object의 함수를 호출하기 위한 변수를 초기화함.
 	access_manager_ = access_manager;
+
+	//LogoutUI Boundary object를 생성함.
 	logout_ui_ = new LogoutUI(input_stream, output_stream, this);
+
+	//Boundary object의 StartInterface() 함수를 호출함.
 	logout_ui_->StartInterface();
 }
 
@@ -239,98 +278,160 @@ void LogoutUI::StartInterface() {
 }
 
 void LogoutUI::ClickLogout() {
+	//Control object의 함수를 호출하고, Control object로부터 반환받은 로그아웃된 이용자의 ID를 출력함.
 	string current_user_id = logout_->ExitSystemAccess();
 	*output_stream_ << "2.2. 로그아웃" << endl << "> " << current_user_id << endl << endl;
 }
 string Logout::ExitSystemAccess() {
+	//AccessManager Entity Class로부터 현재 로그인된 이용자를 받음.
 	User* current_user = access_manager_->GetCurrentUser();
+
+	//현재 로그인된 이용자의 ID를 받음.
 	string current_user_id = current_user->GetId();
+
+	//현재 로그인된 이용자를 로그아웃시킴.
 	access_manager_->Disconnect();
+
+	//로그아웃된 이용자의 ID를 반환함.
 	return current_user_id;
 }
 
-//Register a new bike
 
+
+//자전거 등록 기능을 구현하기 위한 Class의 구현부
 RegisterBikeUI::RegisterBikeUI(ifstream* input_stream, ofstream* output_stream, RegisterBike* register_bike) {
+	//파일로부터 입력받기 위해 사용될 변수를 초기화함.
 	input_stream_ = input_stream;
+
+	//파일에 출력하기 위해 사용될 변수를 초기화함.
 	output_stream_ = output_stream;
+
+	//RegisterBike Control object의 함수를 호출하기 위한 변수를 초기화함.
 	register_bike_ = register_bike;
 }
 
 RegisterBike::RegisterBike(ifstream* input_stream, ofstream* output_stream, BikeCollection* bike_collection, AccessManager* access_manager) {
+	//BikeCollection Entity object의 함수를 호출하기 위한 변수를 초기화함.
 	bike_collection_ = bike_collection;
+
+	//AccessManager Entity object의 함수를 호출하기 위한 변수를 초기화함.
 	access_manager_ = access_manager;
+
+	//RegisterBikeUI Boundary object를 생성함.
 	register_bike_ui_ = new RegisterBikeUI(input_stream, output_stream, this);
+
+	//Boundary object의 StartInterface() 함수를 호출함.
 	register_bike_ui_->StartInterface();
 }
 
 void RegisterBikeUI::StartInterface() {
+	//자전거 등록에 필요한 입력값을 입력받음.
 	BikeInput bike_input;
 	*input_stream_ >> bike_input.bike_id >> bike_input.bike_product_name;
 	RegisterNewBike(bike_input);
 }
 
 void RegisterBikeUI::RegisterNewBike(BikeInput bike_input) {
+	//Control object의 함수를 호출하고, Control object로부터 반환받은 값을 출력함.
 	BikeInput registered_bike = register_bike_->CreateNewBike(bike_input);
 	*output_stream_ << "3.1. 자전거 등록" << endl << "> " << registered_bike.bike_id << ' ' << registered_bike.bike_product_name << endl << endl;
 }
 
 BikeInput RegisterBike::CreateNewBike(BikeInput bike_input) {
+	//AccessManager Entity Class로부터 현재 로그인된 이용자를 받음. 
 	User* current_user = access_manager_->GetCurrentUser();
+
+	//현재 로그인된 이용자가 관리자라면 자전거를 등록함.
 	if (current_user->IsAdmin()) {
 		bike_collection_->AddNewBike(bike_input);
+
+		//Boundary object에게 값을 반환함.
 		return bike_input;
 	}
 }
 
-//Rent a bike
 
+
+//자전거 대여 기능을 구현하기 위한 Class의 구현부
 RentBikeUI::RentBikeUI(ifstream* input_stream, ofstream* output_stream, RentBike* rent_bike) {
+	//파일로부터 입력받기 위해 사용될 변수를 초기화함.
 	input_stream_ = input_stream;
+
+	//파일에 출력하기 위해 사용될 변수를 초기화함.
 	output_stream_ = output_stream;
+
+	//RentBike Control object의 함수를 호출하기 위한 변수를 초기화함.
 	rent_bike_ = rent_bike;
 }
 
 RentBike::RentBike(ifstream* input_stream, ofstream* output_stream, BikeCollection* bike_collection, AccessManager* access_manager) {
+	//BikeCollection Entity object의 함수를 호출하기 위한 변수를 초기화함.
 	bike_collection_ = bike_collection;
+
+	//AccessManager Entity object의 함수를 호출하기 위한 변수를 초기화함.
 	access_manager_ = access_manager;
+
+	//RentBikeUI Boundary object를 생성함.
 	rent_bike_ui_ = new RentBikeUI(input_stream, output_stream, this);
+
+	//Boundary object의 StartInterface() 함수를 호출함.
 	rent_bike_ui_->StartInterface();
 }
 
 
 void RentBikeUI::StartInterface() {
+	//자전거 대여에 필요한 입력값을 입력받음.
 	string bike_id;
 	*input_stream_ >> bike_id;
 	HireBike(bike_id);
 }
 
 void RentBikeUI::HireBike(string bike_id) {
+	//Control object의 함수를 호출하고, Control object로부터 반환받은 값을 출력함.
 	BikeInput rented_bike = rent_bike_->AddNewBike(bike_id);
 	*output_stream_ << "4.1. 자전거 대여" << endl << "> " << rented_bike.bike_id << ' ' << rented_bike.bike_product_name << endl << endl;
 }
 
 BikeInput RentBike::AddNewBike(string bike_id) {
+	//AccessManager Entity Class로부터 현재 로그인된 이용자를 받음.
 	User* current_user = access_manager_->GetCurrentUser();
+
+	//현재 로그인된 이용자가 회원이라면 자전거를 대여함.
 	if (current_user->IsMember()) {
+		//입력한 자전거 ID를 가진 자전거를 받음.
 		Bike* selected_bike = bike_collection_->GetBikeById(bike_id);
+
+		//그 자전거를 현재 로그인된 이용자의 대여한 자전거 목록에 추가함.
 		RentedBikeCollection* user_rented_bike_collection = current_user->GetUserBikes();
 		user_rented_bike_collection->AddNewBike(selected_bike);
+
+		//대여한 자전거의 자전거 ID, 자전거 제품명을 Boundary object에게 반환함.
 		return selected_bike->GetBikeDetails();
 	}
 }
 
-//Check bike rental information
 
+
+//대여 중인 자전거 정보 조회 기능을 구현하기 위한 Class의 구현부
 CheckBikeRentalInformationUI::CheckBikeRentalInformationUI(ifstream* input_stream, ofstream* output_stream, CheckBikeRentalInformation* check_bike_rental_information) {
+	//파일로부터 입력받기 위해 사용될 변수를 초기화함.
 	input_stream_ = input_stream;
+
+	//파일에 출력하기 위해 사용될 변수를 초기화함.
 	output_stream_ = output_stream;
+
+	//CheckBikeRentalInformation Control object의 함수를 호출하기 위한 변수를 초기화함.
 	check_bike_rental_information_ = check_bike_rental_information;
 }
 
 CheckBikeRentalInformation::CheckBikeRentalInformation(ifstream* input_stream, ofstream* output_stream, AccessManager* access_manager){
+	//AccessManager Entity object의 함수를 호출하기 위한 변수를 초기화함.
 	access_manager_ = access_manager;
+
+	//CheckBikeRentalInformationUI object를 생성함.
 	check_bike_rental_information_ui_ = new CheckBikeRentalInformationUI(input_stream, output_stream, this);
+
+	//Boundary object의 StartInterface() 함수를 호출함.
 	check_bike_rental_information_ui_->StartInterface();
 }
 
@@ -340,6 +441,7 @@ void CheckBikeRentalInformationUI::StartInterface() {
 }
 
 void CheckBikeRentalInformationUI::ViewBikeRentalInformation() {
+	//Control object의 함수를 호출하고, Control object로부터 반환받은 값을 출력함.
 	pair<BikeInput*, int> rented_bike_details_list = check_bike_rental_information_->ShowBikeRentalInformation();
 	*output_stream_ << "5.1. 자전거 대여 리스트" << endl;
 	for (int i = 0; i < rented_bike_details_list.second; i++) {
@@ -350,32 +452,59 @@ void CheckBikeRentalInformationUI::ViewBikeRentalInformation() {
 }
 
 pair<BikeInput*, int> CheckBikeRentalInformation::ShowBikeRentalInformation() {
+	//AccessManager Entity Class로부터 현재 로그인된 이용자를 받음.
 	User* current_user = access_manager_->GetCurrentUser();
+
+	//현재 로그인된 이용자가 회원이라면 대여 중인 자전거 정보를 조회함.
 	if (current_user->IsMember()) {
-		RentedBikeCollection* user_rented_bike_collection = current_user->GetUserBikes(); // 대여한 자전거를 ID순으로 정렬함.
+		//현재 로그인된 이용자가 대여한 자전거의 목록을 받음.
+		RentedBikeCollection* user_rented_bike_collection = current_user->GetUserBikes();
+
+		//현재 로그인된 이용자가 대여한 자전거의 목록을 정렬함.
 		user_rented_bike_collection->SortBikeById();
+
+		//현재 로그인된 이용자가 대여한 자전거의 수를 받음.
 		int num_rented_bike = user_rented_bike_collection->GetNumRentedBikes();
+
+		//현재 로그인된 이용자가 대여한 자전거들을 받음.
 		Bike** user_rented_bikes = user_rented_bike_collection->GetRentedBikes();
+
+		//Boundary object에게 반환할 값을 저장할 배열을 생성함.
 		BikeInput* rented_bike_details_list = new BikeInput[num_rented_bike];
+
+		//현재 로그인된 이용자가 대여한 자전거들의 자전거 ID, 자전거 제품명을 배열에 저장함.
 		for (int i = 0; i < num_rented_bike; i++) {
 			BikeInput rented_bike_details = user_rented_bikes[i]->GetBikeDetails();
 			rented_bike_details_list[i] = rented_bike_details;
 		}
+
+		//배열과 자전거의 수를 Boundary object에게 반환함.
 		return pair<BikeInput*, int>(rented_bike_details_list, num_rented_bike);
 	}
 }
 
-//Exit
 
+
+//종료 기능을 구현하기 위한 Class의 구현부
 ExitUI::ExitUI(ifstream* input_stream, ofstream* output_stream, Exit* exit) {
+	//파일로부터 입력받기 위해 사용될 변수를 초기화함.
 	input_stream_ = input_stream;
+
+	//파일에 출력하기 위해 사용될 변수를 초기화함.
 	output_stream_ = output_stream;
+
+	//Exit Control object의 함수를 호출하기 위한 변수를 초기화함.
 	exit_ = exit;
 }
 
 Exit::Exit(ifstream* input_stream, ofstream* output_stream, int* is_program_exit) {
+	//종료를 위한 변수의 값을 바꾸기 위한 변수를 초기화함.
 	is_program_exit_ = is_program_exit;
+
+	//ExitUI Boundary object를 생성함.
 	exit_ui_ = new ExitUI(input_stream, output_stream, this);
+
+	//Boundary object의 StartInterface() 함수를 호출함.
 	exit_ui_->StartInterface();
 }
 
@@ -385,11 +514,15 @@ void ExitUI::StartInterface() {
 }
 
 void ExitUI::ExitSystem() {
+	//Control object의 함수를 호출함.
 	exit_->ExitSystem();
+
+	//시스템이 종료되었음을 화면에 출력함.
 	*output_stream_ << "6.1. 종료";
 }
 
 void Exit::ExitSystem() {
+	//종료를 위한 변수의 값을 1로 바꿈.
 	*is_program_exit_ = 1;
 }
 
