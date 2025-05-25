@@ -1,11 +1,14 @@
 #pragma once
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <utility>
 
 using namespace std;
 
 class User;
-class Bike;
 class UserCollection;
+class Bike;
 class BikeCollection;
 class RentedBikeCollection;
 class AccessManager;
@@ -251,11 +254,10 @@ public:
 class CheckBikeRentalInformation {
 private:
 	CheckBikeRentalInformationUI* check_bike_rental_information_ui_;
-	ofstream* output_stream_;
 	AccessManager* access_manager_;
 public:
 	CheckBikeRentalInformation(ifstream* input_stream, ofstream* output_stream, AccessManager* access_manager);
-	void ShowBikeRentalInformation();
+	pair<BikeInput*, int> ShowBikeRentalInformation();
 };
 
 class ExitUI {

@@ -1,7 +1,4 @@
 #include "SharedBikeRentalSystem.h"
-#include <stdio.h>
-#include <string.h>
-#include <fstream>
 
 #define MAX_STRING 32
 #define INPUT_FILE_NAME "input.txt"

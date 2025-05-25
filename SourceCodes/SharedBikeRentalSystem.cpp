@@ -1,5 +1,4 @@
 #include "SharedBikeRentalSystem.h"
-#include <fstream>
 
 //entity
 
@@ -321,7 +320,6 @@ BikeInput RentBike::AddNewBike(string bike_id) {
 //Check bike rental information
 
 CheckBikeRentalInformation::CheckBikeRentalInformation(ifstream* input_stream, ofstream* output_stream, AccessManager* access_manager){
-	output_stream_ = output_stream;
 	access_manager_ = access_manager;
 	check_bike_rental_information_ui_ = new CheckBikeRentalInformationUI(input_stream, output_stream, this);
 	check_bike_rental_information_ui_->StartInterface();
@@ -338,20 +336,27 @@ void CheckBikeRentalInformationUI::StartInterface() {
 }
 
 void CheckBikeRentalInformationUI::ViewBikeRentalInformation() {
-	check_bike_rental_information_->ShowBikeRentalInformation();
+	pair<BikeInput*, int> rented_bike_details = check_bike_rental_information_->ShowBikeRentalInformation();
+	*output_stream_ << "5.1. 자전거 대여 리스트" << endl;
+	for (int i = 0; i < rented_bike_details.second; i++) {
+		*output_stream_ << "> " << rented_bike_details.first[i].bike_id << ' ' << rented_bike_details.first[i].bike_product_name << endl;
+	}
+	*output_stream_ << endl;
+	delete[] rented_bike_details.first;
 }
 
-void CheckBikeRentalInformation::ShowBikeRentalInformation() {
+pair<BikeInput*, int> CheckBikeRentalInformation::ShowBikeRentalInformation() {
 	User* current_user = access_manager_->GetCurrentUser();
 	if (current_user->IsMember()) {
 		current_user->GetUserBikes()->SortBikeById(); // 대여한 자전거를 ID순으로 정렬함.
-		*output_stream_ << "5.1. 자전거 대여 리스트" << endl;
 		RentedBikeCollection* rented_bikes = current_user->GetUserBikes();
-		for (int i = 0; i < rented_bikes->GetNumRentedBikes(); i++) {
+		int num_rented_bike = rented_bikes->GetNumRentedBikes();
+		BikeInput* rented_bike_details = new BikeInput[num_rented_bike];
+		for (int i = 0; i < num_rented_bike; i++) {
 			BikeInput rented_bike = rented_bikes->GetRentedBikes()[i]->GetBikeDetails();
-			*output_stream_ << "> " << rented_bike.bike_id << ' ' << rented_bike.bike_product_name << endl;
+			rented_bike_details[i] = rented_bike;
 		}
-		*output_stream_ << endl;
+		return pair<BikeInput*, int>(rented_bike_details, num_rented_bike);
 	}
 }
 
