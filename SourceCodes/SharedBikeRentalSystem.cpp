@@ -314,7 +314,8 @@ BikeInput RentBike::AddNewBike(string bike_id) {
 	User* current_user = access_manager_->GetCurrentUser();
 	if (current_user->IsMember()) {
 		Bike* selected_bike = bike_collection_->GetBikeById(bike_id);
-		current_user->GetUserBikes()->AddNewBike(selected_bike);
+		RentedBikeCollection* user_rented_bike_collection = current_user->GetUserBikes();
+		user_rented_bike_collection->AddNewBike(selected_bike);
 		return selected_bike->GetBikeDetails();
 	}
 }
@@ -351,12 +352,13 @@ void CheckBikeRentalInformationUI::ViewBikeRentalInformation() {
 pair<BikeInput*, int> CheckBikeRentalInformation::ShowBikeRentalInformation() {
 	User* current_user = access_manager_->GetCurrentUser();
 	if (current_user->IsMember()) {
-		current_user->GetUserBikes()->SortBikeById(); // 대여한 자전거를 ID순으로 정렬함.
-		RentedBikeCollection* rented_bikes = current_user->GetUserBikes();
-		int num_rented_bike = rented_bikes->GetNumRentedBikes();
+		RentedBikeCollection* user_rented_bike_collection = current_user->GetUserBikes(); // 대여한 자전거를 ID순으로 정렬함.
+		user_rented_bike_collection->SortBikeById();
+		int num_rented_bike = user_rented_bike_collection->GetNumRentedBikes();
+		Bike** user_rented_bikes = user_rented_bike_collection->GetRentedBikes();
 		BikeInput* rented_bike_details_list = new BikeInput[num_rented_bike];
 		for (int i = 0; i < num_rented_bike; i++) {
-			BikeInput rented_bike_details = rented_bikes->GetRentedBikes()[i]->GetBikeDetails();
+			BikeInput rented_bike_details = user_rented_bikes[i]->GetBikeDetails();
 			rented_bike_details_list[i] = rented_bike_details;
 		}
 		return pair<BikeInput*, int>(rented_bike_details_list, num_rented_bike);
