@@ -178,6 +178,12 @@ UserInput SignUp::AddNewUser(UserInput user_input) {
 
 //Login
 
+LoginUI::LoginUI(ifstream* input_stream, ofstream* output_stream, Login* login) {
+	input_stream_ = input_stream;
+	output_stream_ = output_stream;
+	login_ = login;
+}
+
 Login::Login(ifstream* input_stream, ofstream* output_stream, UserCollection* user_collection, AccessManager* access_manager) {
 	user_collection_ = user_collection;
 	access_manager_ = access_manager;
@@ -185,6 +191,17 @@ Login::Login(ifstream* input_stream, ofstream* output_stream, UserCollection* us
 	login_ui_->StartInterface();
 }
 
+void LoginUI::StartInterface() {
+	string user_id, user_password;
+	*input_stream_ >> user_id >> user_password;
+	ClickLogin(user_id, user_password);
+}
+
+void LoginUI::ClickLogin(string user_id, string user_password) {
+	if (login_->IsValid(user_id, user_password)) {
+		*output_stream_ << "2.1. 로그인" << endl << "> " << user_id << ' ' << user_password << endl << endl;
+	}
+}
 
 bool Login::IsValid(string input_id, string input_password) {
 	User* user = user_collection_->GetUserById(input_id);
@@ -201,25 +218,14 @@ bool Login::IsEqual(string input_password, string user_password) {
 	else return false;
 }
 
-LoginUI::LoginUI(ifstream* input_stream, ofstream* output_stream, Login* login) {
-	input_stream_ = input_stream;
-	output_stream_ = output_stream;
-	login_ = login;
-}
-
-void LoginUI::StartInterface() {
-	string user_id, user_password;
-	*input_stream_ >> user_id >> user_password;
-	ClickLogin(user_id, user_password);
-}
-
-void LoginUI::ClickLogin(string user_id, string user_password) {
-	if (login_->IsValid(user_id, user_password)) {
-		*output_stream_ << "2.1. 로그인" << endl << "> " << user_id << ' ' << user_password << endl << endl;
-	}
-}
 
 //Logout
+
+LogoutUI::LogoutUI(ifstream* input_stream, ofstream* output_stream, Logout* logout) {
+	input_stream_ = input_stream;
+	output_stream_ = output_stream;
+	logout_ = logout;
+}
 
 Logout::Logout(ifstream* input_stream, ofstream* output_stream, AccessManager* access_manager) {
 	access_manager_ = access_manager;
@@ -227,11 +233,6 @@ Logout::Logout(ifstream* input_stream, ofstream* output_stream, AccessManager* a
 	logout_ui_->StartInterface();
 }
 
-LogoutUI::LogoutUI(ifstream* input_stream, ofstream* output_stream, Logout* logout) {
-	input_stream_ = input_stream;
-	output_stream_ = output_stream;
-	logout_ = logout;
-}
 
 void LogoutUI::StartInterface() {
 	ClickLogout();
@@ -250,17 +251,17 @@ string Logout::ExitSystemAccess() {
 
 //Register a new bike
 
+RegisterBikeUI::RegisterBikeUI(ifstream* input_stream, ofstream* output_stream, RegisterBike* register_bike) {
+	input_stream_ = input_stream;
+	output_stream_ = output_stream;
+	register_bike_ = register_bike;
+}
+
 RegisterBike::RegisterBike(ifstream* input_stream, ofstream* output_stream, BikeCollection* bike_collection, AccessManager* access_manager) {
 	bike_collection_ = bike_collection;
 	access_manager_ = access_manager;
 	register_bike_ui_ = new RegisterBikeUI(input_stream, output_stream, this);
 	register_bike_ui_->StartInterface();
-}
-
-RegisterBikeUI::RegisterBikeUI(ifstream* input_stream, ofstream* output_stream, RegisterBike* register_bike) {
-	input_stream_ = input_stream;
-	output_stream_ = output_stream;
-	register_bike_ = register_bike;
 }
 
 void RegisterBikeUI::StartInterface() {
@@ -284,6 +285,12 @@ BikeInput RegisterBike::CreateNewBike(BikeInput bike_input) {
 
 //Rent a bike
 
+RentBikeUI::RentBikeUI(ifstream* input_stream, ofstream* output_stream, RentBike* rent_bike) {
+	input_stream_ = input_stream;
+	output_stream_ = output_stream;
+	rent_bike_ = rent_bike;
+}
+
 RentBike::RentBike(ifstream* input_stream, ofstream* output_stream, BikeCollection* bike_collection, AccessManager* access_manager) {
 	bike_collection_ = bike_collection;
 	access_manager_ = access_manager;
@@ -291,11 +298,6 @@ RentBike::RentBike(ifstream* input_stream, ofstream* output_stream, BikeCollecti
 	rent_bike_ui_->StartInterface();
 }
 
-RentBikeUI::RentBikeUI(ifstream* input_stream, ofstream* output_stream, RentBike* rent_bike) {
-	input_stream_ = input_stream;
-	output_stream_ = output_stream;
-	rent_bike_ = rent_bike;
-}
 
 void RentBikeUI::StartInterface() {
 	string bike_id;
@@ -319,30 +321,31 @@ BikeInput RentBike::AddNewBike(string bike_id) {
 
 //Check bike rental information
 
-CheckBikeRentalInformation::CheckBikeRentalInformation(ifstream* input_stream, ofstream* output_stream, AccessManager* access_manager){
-	access_manager_ = access_manager;
-	check_bike_rental_information_ui_ = new CheckBikeRentalInformationUI(input_stream, output_stream, this);
-	check_bike_rental_information_ui_->StartInterface();
-}
-
 CheckBikeRentalInformationUI::CheckBikeRentalInformationUI(ifstream* input_stream, ofstream* output_stream, CheckBikeRentalInformation* check_bike_rental_information) {
 	input_stream_ = input_stream;
 	output_stream_ = output_stream;
 	check_bike_rental_information_ = check_bike_rental_information;
 }
 
+CheckBikeRentalInformation::CheckBikeRentalInformation(ifstream* input_stream, ofstream* output_stream, AccessManager* access_manager){
+	access_manager_ = access_manager;
+	check_bike_rental_information_ui_ = new CheckBikeRentalInformationUI(input_stream, output_stream, this);
+	check_bike_rental_information_ui_->StartInterface();
+}
+
+
 void CheckBikeRentalInformationUI::StartInterface() {
 	ViewBikeRentalInformation();
 }
 
 void CheckBikeRentalInformationUI::ViewBikeRentalInformation() {
-	pair<BikeInput*, int> rented_bike_details = check_bike_rental_information_->ShowBikeRentalInformation();
+	pair<BikeInput*, int> rented_bike_details_list = check_bike_rental_information_->ShowBikeRentalInformation();
 	*output_stream_ << "5.1. 자전거 대여 리스트" << endl;
-	for (int i = 0; i < rented_bike_details.second; i++) {
-		*output_stream_ << "> " << rented_bike_details.first[i].bike_id << ' ' << rented_bike_details.first[i].bike_product_name << endl;
+	for (int i = 0; i < rented_bike_details_list.second; i++) {
+		*output_stream_ << "> " << rented_bike_details_list.first[i].bike_id << ' ' << rented_bike_details_list.first[i].bike_product_name << endl;
 	}
 	*output_stream_ << endl;
-	delete[] rented_bike_details.first;
+	delete[] rented_bike_details_list.first;
 }
 
 pair<BikeInput*, int> CheckBikeRentalInformation::ShowBikeRentalInformation() {
@@ -351,15 +354,22 @@ pair<BikeInput*, int> CheckBikeRentalInformation::ShowBikeRentalInformation() {
 		current_user->GetUserBikes()->SortBikeById(); // 대여한 자전거를 ID순으로 정렬함.
 		RentedBikeCollection* rented_bikes = current_user->GetUserBikes();
 		int num_rented_bike = rented_bikes->GetNumRentedBikes();
-		BikeInput* rented_bike_details = new BikeInput[num_rented_bike];
+		BikeInput* rented_bike_details_list = new BikeInput[num_rented_bike];
 		for (int i = 0; i < num_rented_bike; i++) {
-			BikeInput rented_bike = rented_bikes->GetRentedBikes()[i]->GetBikeDetails();
-			rented_bike_details[i] = rented_bike;
+			BikeInput rented_bike_details = rented_bikes->GetRentedBikes()[i]->GetBikeDetails();
+			rented_bike_details_list[i] = rented_bike_details;
 		}
-		return pair<BikeInput*, int>(rented_bike_details, num_rented_bike);
+		return pair<BikeInput*, int>(rented_bike_details_list, num_rented_bike);
 	}
 }
 
+//Exit
+
+ExitUI::ExitUI(ifstream* input_stream, ofstream* output_stream, Exit* exit) {
+	input_stream_ = input_stream;
+	output_stream_ = output_stream;
+	exit_ = exit;
+}
 
 Exit::Exit(ifstream* input_stream, ofstream* output_stream, int* is_program_exit) {
 	is_program_exit_ = is_program_exit;
@@ -367,11 +377,6 @@ Exit::Exit(ifstream* input_stream, ofstream* output_stream, int* is_program_exit
 	exit_ui_->StartInterface();
 }
 
-ExitUI::ExitUI(ifstream* input_stream, ofstream* output_stream, Exit* exit) {
-	input_stream_ = input_stream;
-	output_stream_ = output_stream;
-	exit_ = exit;
-}
 
 void ExitUI::StartInterface() {
 	ExitSystem();
