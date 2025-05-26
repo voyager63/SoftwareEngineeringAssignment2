@@ -1,4 +1,17 @@
-#include "SharedBikeRentalSystem.h"
+#include "SignUpUI.h"
+#include "SignUp.h"
+#include "LoginUI.h"
+#include "Login.h"
+#include "LogoutUI.h"
+#include "Logout.h"
+#include "RegisterBikeUI.h"
+#include "RegisterBike.h"
+#include "RentBikeUI.h"
+#include "RentBike.h"
+#include "CheckBikeRentalInformationUI.h"
+#include "CheckBikeRentalInformation.h"
+#include "ExitUI.h"
+#include "Exit.h"
 
 #define MAX_STRING 32
 #define INPUT_FILE_NAME "input.txt"
@@ -8,7 +21,7 @@ ifstream in_fp;
 ofstream out_fp;
 
 
-int main(){
+int main() {
 	in_fp.open(INPUT_FILE_NAME);
 	out_fp.open(OUTPUT_FILE_NAME);
 
@@ -30,90 +43,90 @@ int main(){
 
 		switch (menu_level_1)
 		{
-			case 1:
+		case 1:
+		{
+			switch (menu_level_2)
 			{
-				switch (menu_level_2)
-				{
-					case 1: //회원 가입
-					{
-						//Control object 생성
-						SignUp sign_up(&in_fp, &out_fp, &user_collection);
-						break;
-					}
-				}
+			case 1: //회원 가입
+			{
+				//Control object 생성
+				SignUp sign_up(&in_fp, &out_fp, &user_collection);
 				break;
 			}
-			case 2:
+			}
+			break;
+		}
+		case 2:
+		{
+			switch (menu_level_2)
 			{
-				switch (menu_level_2)
-				{
-					case 1: //로그인
-					{
-						//Control object 생성
-						Login login(&in_fp, &out_fp, &user_collection, &access_manager);
-						break;
-					}
-					case 2: //로그아웃
-					{
-						//Control object 생성
-						Logout logout(&in_fp, &out_fp, &access_manager);
-						break;
-					}
-				}
+			case 1: //로그인
+			{
+				//Control object 생성
+				Login login(&in_fp, &out_fp, &user_collection, &access_manager);
 				break;
 			}
-			case 3:
+			case 2: //로그아웃
 			{
-				switch (menu_level_2)
-				{
-					case 1: //자전거 등록
-					{
-						//Control object 생성
-						RegisterBike register_bike(&in_fp, &out_fp, &bike_collection, &access_manager);
-						break;
-					}
-				}
+				//Control object 생성
+				Logout logout(&in_fp, &out_fp, &access_manager);
 				break;
 			}
-			case 4:
+			}
+			break;
+		}
+		case 3:
+		{
+			switch (menu_level_2)
 			{
-				switch (menu_level_2)
-				{
-					case 1: //자전거 대여
-					{
-						//Control object 생성
-						RentBike rent_bike(&in_fp, &out_fp, &bike_collection, &access_manager);
-						break;
-					}
-				}
+			case 1: //자전거 등록
+			{
+				//Control object 생성
+				RegisterBike register_bike(&in_fp, &out_fp, &bike_collection, &access_manager);
 				break;
 			}
-			case 5:
+			}
+			break;
+		}
+		case 4:
+		{
+			switch (menu_level_2)
 			{
-				switch (menu_level_2)
-				{
-					case 1: //대여 중인 자전거 정보 조회
-					{
-						//Control object 생성
-						CheckBikeRentalInformation check_bike_rental_information(&in_fp, &out_fp, &access_manager);
-						break;
-					}
-				}
+			case 1: //자전거 대여
+			{
+				//Control object 생성
+				RentBike rent_bike(&in_fp, &out_fp, &bike_collection, &access_manager);
 				break;
 			}
-			case 6:
+			}
+			break;
+		}
+		case 5:
+		{
+			switch (menu_level_2)
 			{
-				switch (menu_level_2)
-				{
-					case 1: //종료
-					{
-						//Control object 생성
-						Exit(&in_fp, &out_fp, &is_program_exit);
-						break;
-					}
-				}
+			case 1: //대여 중인 자전거 조회
+			{
+				//Control object 생성
+				CheckBikeRentalInformation check_bike_rental_information(&in_fp, &out_fp, &access_manager);
 				break;
 			}
+			}
+			break;
+		}
+		case 6:
+		{
+			switch (menu_level_2)
+			{
+			case 1: //종료
+			{
+				//Control object 생성
+				Exit(&in_fp, &out_fp, &is_program_exit);
+				break;
+			}
+			}
+			break;
+		}
 		}
 	}
 
