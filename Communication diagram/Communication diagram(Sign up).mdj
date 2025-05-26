@@ -1628,7 +1628,7 @@
 											"height": 13,
 											"alpha": 1.5707958004791072,
 											"distance": 19,
-											"text": "2 : createNewUser()"
+											"text": "1.1 : createNewUser()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -1961,7 +1961,7 @@
 											"height": 13,
 											"alpha": 1.5707958004791072,
 											"distance": 19,
-											"text": "3 : addNewUser()"
+											"text": "1.1.1 : addNewUser()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -2506,13 +2506,13 @@
 											},
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 338.36328125,
-											"top": 355,
-											"width": 102.2734375,
+											"left": 312.3037109375,
+											"top": 354,
+											"width": 134.392578125,
 											"height": 13,
-											"alpha": -3.2081608284275656,
-											"distance": 60.13318551349163,
-											"text": "4 : addNewUser()"
+											"alpha": -3.212900128527369,
+											"distance": 70.178344238091,
+											"text": "1.1.1.1 : addNewUser()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -2840,13 +2840,13 @@
 											},
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 505.977783203125,
+											"left": 496.23095703125,
 											"top": 407.5,
-											"width": 78.04443359375,
+											"width": 97.5380859375,
 											"height": 13,
 											"alpha": 1.5707958004791072,
 											"distance": 19,
-											"text": "5 : User()"
+											"text": "1.1.1.1.1 : User()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -2906,7 +2906,8 @@
 										"$ref": "AAAAAAGW49E885SVfg0="
 									}
 								}
-							]
+							],
+							"sequenceNumbering": "custom"
 						}
 					],
 					"messages": [
@@ -2925,7 +2926,8 @@
 							},
 							"connector": {
 								"$ref": "AAAAAAGW1BMg+JowPpc="
-							}
+							},
+							"sequenceNumber": "1"
 						},
 						{
 							"_type": "UMLMessage",
@@ -2942,7 +2944,8 @@
 							},
 							"connector": {
 								"$ref": "AAAAAAGW1BPfGJuLUbg="
-							}
+							},
+							"sequenceNumber": "1.1"
 						},
 						{
 							"_type": "UMLMessage",
@@ -2959,7 +2962,8 @@
 							},
 							"connector": {
 								"$ref": "AAAAAAGW1BSv6J96Akk="
-							}
+							},
+							"sequenceNumber": "1.1.1"
 						},
 						{
 							"_type": "UMLMessage",
@@ -2976,7 +2980,8 @@
 							},
 							"connector": {
 								"$ref": "AAAAAAGW49AxAIaIIsk="
-							}
+							},
+							"sequenceNumber": "1.1.1.1"
 						},
 						{
 							"_type": "UMLMessage",
@@ -2993,7 +2998,8 @@
 							},
 							"connector": {
 								"$ref": "AAAAAAGW49E88ZSDOj8="
-							}
+							},
+							"sequenceNumber": "1.1.1.1.1"
 						}
 					],
 					"participants": [

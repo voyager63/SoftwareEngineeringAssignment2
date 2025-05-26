@@ -227,7 +227,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"parentStyle": true,
-											"width": 45.53173828125,
+											"width": 46.40771484375,
 											"height": 13,
 											"text": "«entity»"
 										},
@@ -253,7 +253,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"parentStyle": true,
-											"width": 73.67724609375,
+											"width": 77.9365234375,
 											"height": 13,
 											"text": "(from Model)"
 										},
@@ -405,7 +405,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"parentStyle": true,
-											"width": 53.47900390625,
+											"width": 54.69775390625,
 											"height": 13,
 											"text": "«control»"
 										},
@@ -431,7 +431,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"parentStyle": true,
-											"width": 73.67724609375,
+											"width": 77.9365234375,
 											"height": 13,
 											"text": "(from Model)"
 										},
@@ -9727,7 +9727,7 @@
 									"containerExtending": true,
 									"left": 740,
 									"top": 60,
-									"width": 121.396484375,
+									"width": 126.00390625,
 									"height": 22
 								},
 								{
@@ -14755,7 +14755,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"parentStyle": true,
-											"width": 80.9072265625,
+											"width": 85.0966796875,
 											"height": 13,
 											"text": "(from Model1)"
 										},
@@ -15007,7 +15007,7 @@
 													"top": 294,
 													"width": 164.2744140625,
 													"height": 13,
-													"text": "Unregistered person, User"
+													"text": "User, Unregistered person"
 												},
 												{
 													"_type": "LabelView",
@@ -15019,7 +15019,7 @@
 													"font": "Arial;13;0",
 													"parentStyle": true,
 													"left": -288,
-													"width": 106.20263671875,
+													"width": 110.24609375,
 													"height": 13,
 													"text": "(from Interaction1)"
 												},
@@ -15126,7 +15126,7 @@
 													"parentStyle": true,
 													"left": -16,
 													"top": -176,
-													"width": 106.20263671875,
+													"width": 110.24609375,
 													"height": 13,
 													"text": "(from Interaction1)"
 												},
@@ -15234,7 +15234,7 @@
 													"parentStyle": true,
 													"left": 272,
 													"top": -320,
-													"width": 106.20263671875,
+													"width": 110.24609375,
 													"height": 13,
 													"text": "(from Interaction1)"
 												},
@@ -15551,9 +15551,9 @@
 											},
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 527.70458984375,
+											"left": 526.692138671875,
 											"top": 294.5,
-											"width": 102.5908203125,
+											"width": 104.61572265625,
 											"height": 13,
 											"alpha": -1.570795892012288,
 											"distance": 23,
@@ -15884,13 +15884,13 @@
 											},
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 256.852294921875,
+											"left": 251.431396484375,
 											"top": 221.5,
-											"width": 90.29541015625,
+											"width": 101.13720703125,
 											"height": 13,
 											"alpha": 1.5707958267948967,
 											"distance": 20,
-											"text": "2 : exitSystem()"
+											"text": "1.1 : exitSystem()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -16217,13 +16217,13 @@
 											},
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 530.852294921875,
+											"left": 520.010498046875,
 											"top": 221.5,
-											"width": 90.29541015625,
+											"width": 111.97900390625,
 											"height": 13,
 											"alpha": 1.5707958267948967,
 											"distance": 20,
-											"text": "3 : exitSystem()"
+											"text": "1.1.1 : exitSystem()"
 										},
 										{
 											"_type": "NodeLabelView",
@@ -16283,7 +16283,8 @@
 										"$ref": "AAAAAAGXBpHGmMYuQt0="
 									}
 								}
-							]
+							],
+							"sequenceNumbering": "custom"
 						}
 					],
 					"messages": [
@@ -16302,7 +16303,8 @@
 							},
 							"connector": {
 								"$ref": "AAAAAAGXBpCFsL4EEoI="
-							}
+							},
+							"sequenceNumber": "1"
 						},
 						{
 							"_type": "UMLMessage",
@@ -16319,7 +16321,8 @@
 							},
 							"connector": {
 								"$ref": "AAAAAAGXBpFVGMJckY8="
-							}
+							},
+							"sequenceNumber": "1.1"
 						},
 						{
 							"_type": "UMLMessage",
@@ -16336,7 +16339,8 @@
 							},
 							"connector": {
 								"$ref": "AAAAAAGXBpHGmMYcu9E="
-							}
+							},
+							"sequenceNumber": "1.1.1"
 						}
 					],
 					"participants": [
@@ -16346,7 +16350,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGXBovhYr1kxmM="
 							},
-							"name": "Unregistered person, User",
+							"name": "User, Unregistered person",
 							"represent": {
 								"$ref": "AAAAAAGXBowuPL1zwro="
 							},
