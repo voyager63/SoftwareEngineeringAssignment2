@@ -1,6 +1,6 @@
 #include "SharedBikeRentalSystem.h"
 
-
+//이용자의 생성자. 이용자의 ID, 비밀번호, 전화번호, 유형, 대여한 자전거 컬렉션을 초기화함.
 User::User(string id, string password, string phone_number, char user_type) {
 	id_ = id;
 	password_ = password;
@@ -9,30 +9,35 @@ User::User(string id, string password, string phone_number, char user_type) {
 	owned_rented_bike_collection_ = new RentedBikeCollection();
 }
 
+//이용자의 ID를 반환함.
 string User::GetId() {
 	return id_;
 }
 
+//이용자의 비밀번호를 반환함.
 string User::GetPassword() {
 	return password_;
 }
 
+//이용자의 대여한 자전거 컬렉션을 반환함.
 RentedBikeCollection* User::GetUserBikes() {
 	return owned_rented_bike_collection_;
 }
 
+//이용자가 관리자라면 true를 반환, 아니라면 false를 반환함.
 bool User::IsAdmin() {
 	if (user_type_ = 'A') return true;
 	else return false;
 }
 
+//이용자가 회원이라면 true를 반환, 아니라면 false를 반환함.
 bool User::IsMember() {
 	if (user_type_ = 'M') return true;
 	else return false;
 }
 
 
-
+//이용자 컬렉션의 생성자. 현재 시스템에 등록된 이용자의 수를 초기화함.
 UserCollection::UserCollection(string admin_id, string admin_password) {
 	num_users_ = 0;
 
@@ -40,12 +45,15 @@ UserCollection::UserCollection(string admin_id, string admin_password) {
 	user_list_[num_users_++] = new User(admin_id, admin_password, "", 'A');
 }
 
+
+//이용자 ID, 비밀번호, 전화번호, 이용자 유형을 입력받아 이용자를 생성함.
 void UserCollection::AddNewUser(UserInput user_input) {
 	user_list_[num_users_++] = new User(user_input.id, user_input.password, user_input.phone_number, user_input.user_type);
 }
 
+
+//입력받은 ID와 같은 ID를 가진 이용자를 반환함.
 User* UserCollection::GetUserById(string id) {
-	//입력한 ID와 같은 ID를 가진 이용자를 반환함.
 	for (int i = 0; i < num_users_; i++) {
 		if (user_list_[i]->GetId() == id) return user_list_[i];
 	}
@@ -53,12 +61,13 @@ User* UserCollection::GetUserById(string id) {
 
 
 
-
+//자전거의 생성자. 자전거의 ID, 제품명을 초기화함.
 Bike::Bike(string bike_id, string bike_product_name) {
 	bike_id_ = bike_id;
 	bike_product_name_ = bike_product_name;
 }
 
+//자전거의 ID, 제품명을 반환함.
 BikeInput Bike::GetBikeDetails() {
 	BikeInput bike_input;
 	bike_input.bike_id = bike_id_;
@@ -66,17 +75,20 @@ BikeInput Bike::GetBikeDetails() {
 	return bike_input;
 }
 
-
+//자전거 컬렉션의 생성자. 현재 시스템에 등록된 자전거의 수를 초기화함.
 BikeCollection::BikeCollection() {
 	num_bikes_ = 0;
 }
 
+
+//자전거 ID, 제품명을 입력받아 자전거를 생성함.
 void BikeCollection::AddNewBike(BikeInput bike_input) {
 	bike_list_[num_bikes_++] = new Bike(bike_input.bike_id, bike_input.bike_product_name);
 }
 
+
+//입력한 자전거 ID와 같은 ID를 가진 자전거를 반환함.
 Bike* BikeCollection::GetBikeById(string bike_id) {
-	//입력한 자전거 ID와 같은 ID를 가진 자전거를 반환함.
 	for (int i = 0; i < num_bikes_; i++) {
 		if (bike_list_[i]->GetBikeDetails().bike_id == bike_id) return bike_list_[i];
 	}
@@ -84,32 +96,43 @@ Bike* BikeCollection::GetBikeById(string bike_id) {
 
 
 
-
+//이용자의 대여한 자전거 컬렉션의 생성자. 대여한 자전거의 수를 초기화함.
 RentedBikeCollection::RentedBikeCollection() {
 	num_rented_bikes_ = 0;
 }
 
+//자전거를 입력받아 대여한 자전거 배열에 추가함.
 void RentedBikeCollection::AddNewBike(Bike* bike) {
 	owned_rented_bike_[num_rented_bikes_++] = bike;
 }
 
+
+//이용자의 대여한 자전거의 수를 반환함.
 int RentedBikeCollection::GetNumRentedBikes() {
 	return num_rented_bikes_;
 }
 
+//이용자의 대여한 자전거들을 반환함.
 Bike** RentedBikeCollection::GetRentedBikes() {
 	return owned_rented_bike_;
 }
 
+
+//대여한 자전거들을 선택 정렬을 통해 자전거 ID의 오름차순으로 정렬함.
 void RentedBikeCollection::SortBikeById() {
-	//선택 정렬을 통해 자전거 ID의 오름차순으로 대여한 자전거를 정렬함.
 	for (int i = 0; i < num_rented_bikes_ - 1; i++) {
+
+		//가장 작은 자전거 ID를 가진 자전거의 인덱스
 		int min = i;
+
+		//가장 작은 자전거 ID를 가진 자전거의 인덱스를 찾음.
 		for (int j = i + 1; j < num_rented_bikes_; j++) {
 			if (owned_rented_bike_[min]->GetBikeDetails().bike_id > owned_rented_bike_[j]->GetBikeDetails().bike_id) {
 				min = j;
 			}
 		}
+
+		//가장 작은 자전거 ID를 가진 자전거와 i 번째 자전거의 위치를 서로 바꿈.
 		Bike* temp = owned_rented_bike_[i];
 		owned_rented_bike_[i] = owned_rented_bike_[min];
 		owned_rented_bike_[min] = temp;
@@ -117,19 +140,22 @@ void RentedBikeCollection::SortBikeById() {
 }
 
 
+//로그인, 로그아웃 기능과 현재 로그인된 이용자를 표시해주는 Class의 생성자.
 AccessManager::AccessManager() {
 	current_user_ = NULL;
 }
 
+//현재 로그인된 이용자를 가리키는 변수에 입력받은 이용자를 저장함으로써 입력받은 이용자를 로그인시킴.
 void AccessManager::Connect(User* user) {
-	//현재 로그인된 이용자를 명시함.
 	current_user_ = user;
 }
 
+//현재 로그인된 이용자를 가리키는 변수의 값을 NULL로 바꿈으로써 현재 로그인된 이용자를 로그아웃시킴.
 void AccessManager::Disconnect() {
 	current_user_ = NULL;
 }
 
+//현재 로그인된 이용자를 반환함.
 User* AccessManager::GetCurrentUser() {
 	return current_user_;
 }
@@ -166,6 +192,8 @@ void SignUpUI::StartInterface()
 	UserInput user_input;
 	user_input.user_type = 'M';
 	*input_stream_ >> user_input.id >> user_input.password >> user_input.phone_number;
+
+	//입력받은 값을 내부로 전달하기 위해 함수를 호출함.
 	CreateNewUser(user_input);
 }
 
@@ -177,6 +205,7 @@ void SignUpUI::CreateNewUser(UserInput user_input)
 }
 
 UserInput SignUp::AddNewUser(UserInput user_input) {
+	//함수를 호출함으로써 Entity object에게 값을 전달함.
 	user_collection_->AddNewUser(user_input);
 
 	//Boundary object에게 값을 반환함.
@@ -215,6 +244,8 @@ void LoginUI::StartInterface() {
 	//로그인에 필요한 입력값을 입력받음.
 	string user_id, user_password;
 	*input_stream_ >> user_id >> user_password;
+
+	//입력받은 값을 내부로 전달하기 위해 함수를 호출함.
 	ClickLogin(user_id, user_password);
 }
 
@@ -234,6 +265,7 @@ bool Login::IsValid(string input_id, string input_password) {
 
 	//입력한 비밀번호와 저장된 비밀번호가 일치하면 로그인시킴.
 	if (IsEqual(input_password, user_password)) {
+		//함수를 호출함으로써 Entity object에게 값을 전달함.
 		access_manager_->Connect(user);
 
 		//로그인에 성공했다는 것을 Boundary object에게 전달함.
@@ -242,6 +274,7 @@ bool Login::IsValid(string input_id, string input_password) {
 	return false;
 }
 
+//입력받은 비밀번호와 이용자의 저장된 비밀번호를 비교하여, 같으면 true, 그렇지 않으면 false를 반환함.
 bool Login::IsEqual(string input_password, string user_password) {
 	if (input_password == user_password) return true;
 	else return false;
@@ -274,6 +307,7 @@ Logout::Logout(ifstream* input_stream, ofstream* output_stream, AccessManager* a
 
 
 void LogoutUI::StartInterface() {
+	//입력받은 값을 내부로 전달하기 위해 함수를 호출함.
 	ClickLogout();
 }
 
@@ -328,6 +362,8 @@ void RegisterBikeUI::StartInterface() {
 	//자전거 등록에 필요한 입력값을 입력받음.
 	BikeInput bike_input;
 	*input_stream_ >> bike_input.bike_id >> bike_input.bike_product_name;
+
+	//입력받은 값을 내부로 전달하기 위해 함수를 호출함.
 	RegisterNewBike(bike_input);
 }
 
@@ -343,6 +379,7 @@ BikeInput RegisterBike::CreateNewBike(BikeInput bike_input) {
 
 	//현재 로그인된 이용자가 관리자라면 자전거를 등록함.
 	if (current_user->IsAdmin()) {
+		//함수를 호출함으로써 Entity object에게 값을 전달함.
 		bike_collection_->AddNewBike(bike_input);
 
 		//Boundary object에게 값을 반환함.
@@ -383,6 +420,8 @@ void RentBikeUI::StartInterface() {
 	//자전거 대여에 필요한 입력값을 입력받음.
 	string bike_id;
 	*input_stream_ >> bike_id;
+
+	//입력받은 값을 내부로 전달하기 위해 함수를 호출함.
 	HireBike(bike_id);
 }
 
@@ -401,7 +440,7 @@ BikeInput RentBike::AddNewBike(string bike_id) {
 		//입력한 자전거 ID를 가진 자전거를 받음.
 		Bike* selected_bike = bike_collection_->GetBikeById(bike_id);
 
-		//그 자전거를 현재 로그인된 이용자의 대여한 자전거 목록에 추가함.
+		//그 자전거를 현재 로그인된 이용자의 대여한 자전거 컬렉션에 추가함.
 		RentedBikeCollection* user_rented_bike_collection = current_user->GetUserBikes();
 		user_rented_bike_collection->AddNewBike(selected_bike);
 
@@ -437,6 +476,7 @@ CheckBikeRentalInformation::CheckBikeRentalInformation(ifstream* input_stream, o
 
 
 void CheckBikeRentalInformationUI::StartInterface() {
+	//입력받은 값을 내부로 전달하기 위해 함수를 호출함.
 	ViewBikeRentalInformation();
 }
 
@@ -457,22 +497,22 @@ pair<BikeInput*, int> CheckBikeRentalInformation::ShowBikeRentalInformation() {
 
 	//현재 로그인된 이용자가 회원이라면 대여 중인 자전거 정보를 조회함.
 	if (current_user->IsMember()) {
-		//현재 로그인된 이용자가 대여한 자전거의 목록을 받음.
+		//현재 로그인된 이용자의 대여한 자전거 컬렉션을 받음.
 		RentedBikeCollection* user_rented_bike_collection = current_user->GetUserBikes();
 
-		//현재 로그인된 이용자가 대여한 자전거의 목록을 정렬함.
+		//현재 로그인된 이용자의 대여한 자전거들을 정렬함.
 		user_rented_bike_collection->SortBikeById();
 
-		//현재 로그인된 이용자가 대여한 자전거의 수를 받음.
+		//현재 로그인된 이용자의 대여한 자전거의 수를 받음.
 		int num_rented_bike = user_rented_bike_collection->GetNumRentedBikes();
 
-		//현재 로그인된 이용자가 대여한 자전거들을 받음.
+		//현재 로그인된 이용자의 대여한 자전거들을 받음.
 		Bike** user_rented_bikes = user_rented_bike_collection->GetRentedBikes();
 
 		//Boundary object에게 반환할 값을 저장할 배열을 생성함.
 		BikeInput* rented_bike_details_list = new BikeInput[num_rented_bike];
 
-		//현재 로그인된 이용자가 대여한 자전거들의 자전거 ID, 자전거 제품명을 배열에 저장함.
+		//현재 로그인된 이용자의 대여한 자전거들의 자전거 ID, 자전거 제품명을 배열에 저장함.
 		for (int i = 0; i < num_rented_bike; i++) {
 			BikeInput rented_bike_details = user_rented_bikes[i]->GetBikeDetails();
 			rented_bike_details_list[i] = rented_bike_details;
@@ -510,6 +550,7 @@ Exit::Exit(ifstream* input_stream, ofstream* output_stream, int* is_program_exit
 
 
 void ExitUI::StartInterface() {
+	//입력받은 값을 내부로 전달하기 위해 함수를 호출함.
 	ExitSystem();
 }
 

@@ -83,7 +83,7 @@ public:
 };
 
 
-//이용자 목록을 표현하는 Entity Class
+//현재 시스템에 등록된 이용자 컬렉션을 표현하는 Entity Class
 class UserCollection {
 private:
 	//현재 시스템에 등록된 이용자의 배열
@@ -122,7 +122,7 @@ public:
 };
 
 
-//등록된 자전거 목록을 표현하는 Entity Class
+//현재 시스템에 등록된 자전거 컬렉션을 표현하는 Entity Class
 class BikeCollection {
 private:
 	//현재 시스템에 등록된 자전거의 배열
@@ -143,7 +143,7 @@ public:
 };
 
 
-//회원이 대여한 자전거 목록을 표현하는 Entity Class
+//회원이 대여한 자전거 컬렉션을 표현하는 Entity Class
 class RentedBikeCollection {
 private:
 	//회원이 현재 대여한 자전거의 배열
