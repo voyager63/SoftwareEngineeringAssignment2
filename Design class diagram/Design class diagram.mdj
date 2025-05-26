@@ -3564,7 +3564,7 @@
 											"top": 471,
 											"width": 347.48046875,
 											"height": 13,
-											"text": "+checkBikeRentalInformation(): Void",
+											"text": "+viewBikeRentalInformation(): Void",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5563,7 +5563,7 @@
 							},
 							"font": "Arial;13;0",
 							"parentStyle": false,
-							"left": 408,
+							"left": 296,
 							"top": 752,
 							"width": 31.68359375,
 							"height": 25,
@@ -5577,7 +5577,7 @@
 							},
 							"font": "Arial;13;0",
 							"parentStyle": false,
-							"left": 296,
+							"left": 408,
 							"top": 752,
 							"width": 32,
 							"height": 25,
@@ -8242,7 +8242,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGW2itP9cBQSRM="
 							},
-							"name": "checkBikeRentalInformation",
+							"name": "viewBikeRentalInformation",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
