@@ -13,17 +13,14 @@
 #include "ExitUI.h"
 #include "Exit.h"
 
-#define MAX_STRING 32
-#define INPUT_FILE_NAME "input.txt"
-#define OUTPUT_FILE_NAME "output.txt"
-
-ifstream in_fp;
-ofstream out_fp;
-
 
 int main() {
-	in_fp.open(INPUT_FILE_NAME);
-	out_fp.open(OUTPUT_FILE_NAME);
+
+	ifstream in_fp;
+	ofstream out_fp;
+
+	in_fp.open("input.txt");
+	out_fp.open("output.txt");
 
 	int menu_level_1 = 0, menu_level_2 = 0;
 	int is_program_exit = 0;
